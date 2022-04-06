@@ -47,17 +47,6 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        time1TextField.delegate = self
-        time2TextField.delegate = self
-        time3TextField.delegate = self
-        time4TextField.delegate = self
-        
-        
-        drugNameTextField.delegate = self
-        drugCategoryTextField.delegate = self
-        numberOfDosesTextField.delegate = self
-
         categoryPickerView.dataSource = self
         categoryPickerView.delegate = self
         dosesPickerView.dataSource = self
@@ -79,48 +68,40 @@ class RegisterViewController: UIViewController {
         time2TextField.inputAccessoryView = toolbar
         time3TextField.inputAccessoryView = toolbar
         time4TextField.inputAccessoryView = toolbar
-    }
-
-    @objc func doneButtonPressed() {
-        time1TextField.text = dateFormatter.string(from: datePicker.date)
-        time2TextField.text = dateFormatter.string(from: datePicker.date)
-        time3TextField.text = dateFormatter.string(from: datePicker.date)
-
-        view.endEditing(true)
-    }
-}
-
-
-extension RegisterViewController: UITextFieldDelegate {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
         
         drugCategoryTextField.inputView = categoryPickerView
         numberOfDosesTextField.inputView = dosesPickerView
-        time1TextField.inputView = datePicker
-        time2TextField.inputView = datePicker
-        time3TextField.inputView = datePicker
-        time4TextField.inputView = datePicker
-
-        }
-    
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        if textField == time1TextField {
-            time1TextField.addTarget(self, action: #selector(timeChanged), for: .valueChanged)
-        }
-        if textField == time2TextField {
-            time2TextField.addTarget(self, action: #selector(timeChanged), for: .valueChanged)
-        }
-        if textField == time3TextField {
-            time3TextField.addTarget(self, action: #selector(timeChanged), for: .valueChanged)
-        }
     }
     
-    @objc func timeChanged(picker: UIDatePicker) {
-        time1TextField.text = dateFormatter.string(from: datePicker.date)
-        time2TextField.text = dateFormatter.string(from: datePicker.date)
-        time3TextField.text = dateFormatter.string(from: datePicker.date)
+    func configureDatePicker() {
+        let time1DatePicker = datePicker
+        let time2DatePicker = datePicker
+        let time3DatePicker = datePicker
+        let time4DatePicker = datePicker
+        
+        time1DatePicker.addTarget(self, action: #selector(didChangeDatePicker), for: .valueChanged)
+        time2DatePicker.addTarget(self, action: #selector(didChangeDatePicker), for: .valueChanged)
+        time3DatePicker.addTarget(self, action: #selector(didChangeDatePicker), for: .valueChanged)
+        time4DatePicker.addTarget(self, action: #selector(didChangeDatePicker), for: .valueChanged)
+        
+        time1TextField.inputView = time1DatePicker
+        time2TextField.inputView = time2DatePicker
+        time3TextField.inputView = time3DatePicker
+        time4TextField.inputView = time4DatePicker
+    }
+
+    @objc func doneButtonPressed() {
+        view.endEditing(true)
+    }
     
+    @objc func didChangeDatePicker(sender: UIDatePicker) {
+        if sender == time1TextField.inputView {
+            time1TextField.text = dateFormatter.string(from: sender.date)
+        } else if sender == time2TextField.inputView {
+            time2TextField.text = dateFormatter.string(from: sender.date)
+        } else if sender == time3TextField.inputView {
+            time3TextField.text = dateFormatter.string(from: sender.date)
+        }
     }
 }
     
