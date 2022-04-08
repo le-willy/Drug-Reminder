@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B6C6D61F6869E8722781CB9 /* Pods_DrugReminderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E9EDDD20AF06B22E354815 /* Pods_DrugReminderTests.framework */; };
 		3F28F53A27FC506900844EAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F53927FC506900844EAC /* AppDelegate.swift */; };
 		3F28F53C27FC506900844EAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F53B27FC506900844EAC /* SceneDelegate.swift */; };
 		3F28F53E27FC506900844EAC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F53D27FC506900844EAC /* HomeViewController.swift */; };
@@ -20,6 +21,8 @@
 		3F28F56E27FC519C00844EAC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F56D27FC519C00844EAC /* SettingsViewController.swift */; };
 		3F28F57027FC51C200844EAC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F56F27FC51C200844EAC /* RegisterViewController.swift */; };
 		3F28F57327FC51F700844EAC /* DrugModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F57227FC51F700844EAC /* DrugModel.swift */; };
+		7F881F479A76FB7F909C7AFA /* Pods_DrugReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4218CBDA9893ABB4C3E57767 /* Pods_DrugReminder.framework */; };
+		BC2BF500AC45DBB3FE615CCE /* Pods_DrugReminder_DrugReminderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFDD2FD12541CE9FFBA4AD76 /* Pods_DrugReminder_DrugReminderUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06E9EDDD20AF06B22E354815 /* Pods_DrugReminderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugReminderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A633FA6D36B0DFD78BA257E /* Pods-DrugReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugReminder.release.xcconfig"; path = "Target Support Files/Pods-DrugReminder/Pods-DrugReminder.release.xcconfig"; sourceTree = "<group>"; };
+		2EF8B67E9E6A237A523F7EB6 /* Pods-DrugReminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugReminder.debug.xcconfig"; path = "Target Support Files/Pods-DrugReminder/Pods-DrugReminder.debug.xcconfig"; sourceTree = "<group>"; };
 		3F28F53627FC506900844EAC /* DrugReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrugReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F28F53927FC506900844EAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F28F53B27FC506900844EAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +63,12 @@
 		3F28F56D27FC519C00844EAC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3F28F56F27FC51C200844EAC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		3F28F57227FC51F700844EAC /* DrugModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugModel.swift; sourceTree = "<group>"; };
+		4218CBDA9893ABB4C3E57767 /* Pods_DrugReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AA5CD909BB563934EC2D9C8 /* Pods-DrugReminderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugReminderTests.debug.xcconfig"; path = "Target Support Files/Pods-DrugReminderTests/Pods-DrugReminderTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8BAE08A9704C8B17015E3357 /* Pods-DrugReminderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugReminderTests.release.xcconfig"; path = "Target Support Files/Pods-DrugReminderTests/Pods-DrugReminderTests.release.xcconfig"; sourceTree = "<group>"; };
+		A6B1AFF2F7ACA06A95610447 /* Pods-DrugReminder-DrugReminderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugReminder-DrugReminderUITests.debug.xcconfig"; path = "Target Support Files/Pods-DrugReminder-DrugReminderUITests/Pods-DrugReminder-DrugReminderUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BFDD2FD12541CE9FFBA4AD76 /* Pods_DrugReminder_DrugReminderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugReminder_DrugReminderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0AE6F69C1FF52328CE4541C /* Pods-DrugReminder-DrugReminderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugReminder-DrugReminderUITests.release.xcconfig"; path = "Target Support Files/Pods-DrugReminder-DrugReminderUITests/Pods-DrugReminder-DrugReminderUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F881F479A76FB7F909C7AFA /* Pods_DrugReminder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B6C6D61F6869E8722781CB9 /* Pods_DrugReminderTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,12 +92,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC2BF500AC45DBB3FE615CCE /* Pods_DrugReminder_DrugReminderUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29315A3B48D5792B535091E0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2EF8B67E9E6A237A523F7EB6 /* Pods-DrugReminder.debug.xcconfig */,
+				2A633FA6D36B0DFD78BA257E /* Pods-DrugReminder.release.xcconfig */,
+				A6B1AFF2F7ACA06A95610447 /* Pods-DrugReminder-DrugReminderUITests.debug.xcconfig */,
+				F0AE6F69C1FF52328CE4541C /* Pods-DrugReminder-DrugReminderUITests.release.xcconfig */,
+				7AA5CD909BB563934EC2D9C8 /* Pods-DrugReminderTests.debug.xcconfig */,
+				8BAE08A9704C8B17015E3357 /* Pods-DrugReminderTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		3F28F52D27FC506900844EAC = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +120,8 @@
 				3F28F54F27FC506A00844EAC /* DrugReminderTests */,
 				3F28F55927FC506A00844EAC /* DrugReminderUITests */,
 				3F28F53727FC506900844EAC /* Products */,
+				29315A3B48D5792B535091E0 /* Pods */,
+				867F8A949920E7CF7D866119 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,6 +194,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		867F8A949920E7CF7D866119 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4218CBDA9893ABB4C3E57767 /* Pods_DrugReminder.framework */,
+				BFDD2FD12541CE9FFBA4AD76 /* Pods_DrugReminder_DrugReminderUITests.framework */,
+				06E9EDDD20AF06B22E354815 /* Pods_DrugReminderTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -170,9 +211,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F28F56027FC506A00844EAC /* Build configuration list for PBXNativeTarget "DrugReminder" */;
 			buildPhases = (
+				418AEA7DDACD3420B9CA46CF /* [CP] Check Pods Manifest.lock */,
 				3F28F53227FC506900844EAC /* Sources */,
 				3F28F53327FC506900844EAC /* Frameworks */,
 				3F28F53427FC506900844EAC /* Resources */,
+				0F043E1345B1E41A85A08B94 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -187,6 +230,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F28F56327FC506A00844EAC /* Build configuration list for PBXNativeTarget "DrugReminderTests" */;
 			buildPhases = (
+				A77CA67BC32A3CA1F4001E41 /* [CP] Check Pods Manifest.lock */,
 				3F28F54827FC506A00844EAC /* Sources */,
 				3F28F54927FC506A00844EAC /* Frameworks */,
 				3F28F54A27FC506A00844EAC /* Resources */,
@@ -205,9 +249,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F28F56627FC506A00844EAC /* Build configuration list for PBXNativeTarget "DrugReminderUITests" */;
 			buildPhases = (
+				8354A477EA660AC10435C4A1 /* [CP] Check Pods Manifest.lock */,
 				3F28F55227FC506A00844EAC /* Sources */,
 				3F28F55327FC506A00844EAC /* Frameworks */,
 				3F28F55427FC506A00844EAC /* Resources */,
+				9B090DE7E24D29A20CD9A570 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -288,6 +334,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F043E1345B1E41A85A08B94 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DrugReminder/Pods-DrugReminder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DrugReminder/Pods-DrugReminder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DrugReminder/Pods-DrugReminder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		418AEA7DDACD3420B9CA46CF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DrugReminder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8354A477EA660AC10435C4A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DrugReminder-DrugReminderUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B090DE7E24D29A20CD9A570 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DrugReminder-DrugReminderUITests/Pods-DrugReminder-DrugReminderUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DrugReminder-DrugReminderUITests/Pods-DrugReminder-DrugReminderUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DrugReminder-DrugReminderUITests/Pods-DrugReminder-DrugReminderUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A77CA67BC32A3CA1F4001E41 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DrugReminderTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3F28F53227FC506900844EAC /* Sources */ = {
@@ -472,6 +621,7 @@
 		};
 		3F28F56127FC506A00844EAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EF8B67E9E6A237A523F7EB6 /* Pods-DrugReminder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -500,6 +650,7 @@
 		};
 		3F28F56227FC506A00844EAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A633FA6D36B0DFD78BA257E /* Pods-DrugReminder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -528,6 +679,7 @@
 		};
 		3F28F56427FC506A00844EAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AA5CD909BB563934EC2D9C8 /* Pods-DrugReminderTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -548,6 +700,7 @@
 		};
 		3F28F56527FC506A00844EAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BAE08A9704C8B17015E3357 /* Pods-DrugReminderTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -568,6 +721,7 @@
 		};
 		3F28F56727FC506A00844EAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6B1AFF2F7ACA06A95610447 /* Pods-DrugReminder-DrugReminderUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -586,6 +740,7 @@
 		};
 		3F28F56827FC506A00844EAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0AE6F69C1FF52328CE4541C /* Pods-DrugReminder-DrugReminderUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
