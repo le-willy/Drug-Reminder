@@ -21,6 +21,10 @@
 		3F28F56E27FC519C00844EAC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F56D27FC519C00844EAC /* SettingsViewController.swift */; };
 		3F28F57027FC51C200844EAC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F56F27FC51C200844EAC /* RegisterViewController.swift */; };
 		3F28F57327FC51F700844EAC /* DrugModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F57227FC51F700844EAC /* DrugModel.swift */; };
+		3F28F5762804D7B900844EAC /* DrugNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F5742804D7B900844EAC /* DrugNameTableViewCell.swift */; };
+		3F28F5772804D7B900844EAC /* DrugNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F28F5752804D7B900844EAC /* DrugNameTableViewCell.xib */; };
+		3FAEE8832808C195007D5E3B /* Time1TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAEE8812808C195007D5E3B /* Time1TableViewCell.swift */; };
+		3FAEE8842808C195007D5E3B /* Time1TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAEE8822808C195007D5E3B /* Time1TableViewCell.xib */; };
 		7F881F479A76FB7F909C7AFA /* Pods_DrugReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4218CBDA9893ABB4C3E57767 /* Pods_DrugReminder.framework */; };
 		BC2BF500AC45DBB3FE615CCE /* Pods_DrugReminder_DrugReminderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFDD2FD12541CE9FFBA4AD76 /* Pods_DrugReminder_DrugReminderUITests.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +67,10 @@
 		3F28F56D27FC519C00844EAC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3F28F56F27FC51C200844EAC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		3F28F57227FC51F700844EAC /* DrugModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugModel.swift; sourceTree = "<group>"; };
+		3F28F5742804D7B900844EAC /* DrugNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugNameTableViewCell.swift; sourceTree = "<group>"; };
+		3F28F5752804D7B900844EAC /* DrugNameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrugNameTableViewCell.xib; sourceTree = "<group>"; };
+		3FAEE8812808C195007D5E3B /* Time1TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time1TableViewCell.swift; sourceTree = "<group>"; };
+		3FAEE8822808C195007D5E3B /* Time1TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Time1TableViewCell.xib; sourceTree = "<group>"; };
 		4218CBDA9893ABB4C3E57767 /* Pods_DrugReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AA5CD909BB563934EC2D9C8 /* Pods-DrugReminderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugReminderTests.debug.xcconfig"; path = "Target Support Files/Pods-DrugReminderTests/Pods-DrugReminderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BAE08A9704C8B17015E3357 /* Pods-DrugReminderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugReminderTests.release.xcconfig"; path = "Target Support Files/Pods-DrugReminderTests/Pods-DrugReminderTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,7 +117,6 @@
 				7AA5CD909BB563934EC2D9C8 /* Pods-DrugReminderTests.debug.xcconfig */,
 				8BAE08A9704C8B17015E3357 /* Pods-DrugReminderTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -174,6 +181,8 @@
 				3F28F56B27FC517100844EAC /* CalendarViewController.swift */,
 				3F28F56D27FC519C00844EAC /* SettingsViewController.swift */,
 				3F28F56F27FC51C200844EAC /* RegisterViewController.swift */,
+				3F28F5742804D7B900844EAC /* DrugNameTableViewCell.swift */,
+				3FAEE8812808C195007D5E3B /* Time1TableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -182,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				3F28F53F27FC506900844EAC /* Main.storyboard */,
+				3F28F5752804D7B900844EAC /* DrugNameTableViewCell.xib */,
+				3FAEE8822808C195007D5E3B /* Time1TableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,9 +324,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F28F5772804D7B900844EAC /* DrugNameTableViewCell.xib in Resources */,
 				3F28F54627FC506A00844EAC /* LaunchScreen.storyboard in Resources */,
 				3F28F54327FC506A00844EAC /* Assets.xcassets in Resources */,
 				3F28F54127FC506900844EAC /* Main.storyboard in Resources */,
+				3FAEE8842808C195007D5E3B /* Time1TableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,8 +460,10 @@
 				3F28F53E27FC506900844EAC /* HomeViewController.swift in Sources */,
 				3F28F53A27FC506900844EAC /* AppDelegate.swift in Sources */,
 				3F28F57027FC51C200844EAC /* RegisterViewController.swift in Sources */,
+				3F28F5762804D7B900844EAC /* DrugNameTableViewCell.swift in Sources */,
 				3F28F56E27FC519C00844EAC /* SettingsViewController.swift in Sources */,
 				3F28F57327FC51F700844EAC /* DrugModel.swift in Sources */,
+				3FAEE8832808C195007D5E3B /* Time1TableViewCell.swift in Sources */,
 				3F28F53C27FC506900844EAC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

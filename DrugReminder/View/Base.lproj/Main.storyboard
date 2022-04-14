@@ -353,7 +353,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="お薬新規登録" id="EVc-ku-pKm">
-                        <barButtonItem key="rightBarButtonItem" title="登録" id="WhX-z4-MaJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="登録" id="WhX-z4-MaJ">
+                            <connections>
+                                <action selector="registerPressed:" destination="MT9-hZ-zkN" id="zc1-Xl-YBK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="drugCategoryTextField" destination="xpp-M7-mRK" id="HHF-yW-Nf4"/>

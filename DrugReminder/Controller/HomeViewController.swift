@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HomeViewController: UIViewController {
 
@@ -13,11 +14,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addDrugButton: UIBarButtonItem!
     
-    var drugData = [DrugData]()
+    let realm = try! Realm()
+    var drugDataArray: Results<DrugModel>?
     
     let section = ["1","2","3","4"]
-    
-    var dayValue = 1
+    var dayValue = 0
+    var tableViewCount = 0
     
     var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
@@ -29,12 +31,17 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dayLabel.text = dateFormatter.string(from: Date())
         
         tableView.delegate = self
         tableView.dataSource = self
         
         addButtonPressed()
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        loadData()
+        tableView.reloadData()
     }
     
     @objc func addButtonSegue() {
@@ -53,11 +60,9 @@ class HomeViewController: UIViewController {
         var dayAfter: Date {
             return Calendar.current.date(byAdding: .day, value: dayValue, to: Date())!
         }
-        
-        let nextDay = dateFormatter.string(from: dayAfter)
         dayValue += 1
+        let nextDay = dateFormatter.string(from: dayAfter)
         dayLabel.text = nextDay
-        
     }
         
     
@@ -65,32 +70,71 @@ class HomeViewController: UIViewController {
         var dayBefore: Date {
             return Calendar.current.date(byAdding: .day, value: dayValue, to: Date())!
         }
+        dayValue -= 1
         
         let previousDay = dateFormatter.string(from: dayBefore)
-        dayValue -= 1
         dayLabel.text = previousDay
+    }
+    
+    func loadData() {
+        drugDataArray = realm.objects(DrugModel.self)
     }
     
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return section.count
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return drugDataArray?.count ?? 4
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "title"
-    }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath)
-        cell.textLabel?.text = "hello"
-        
-        return cell
+        switch tableViewCount {
+        case 0:
+            tableView.register(UINib(nibName: "DrugNameTableViewCell", bundle: nil), forCellReuseIdentifier: "drugName")
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "drugName", for: indexPath) as! DrugNameTableViewCell
+            cell.nameLabel.text = drugDataArray?[indexPath.row].drugName
+            cell.categoryLabel.text = drugDataArray?[indexPath.row].drugCatergory
+            cell.dosesPerDayLabel.text = drugDataArray?[indexPath.row].numberOfDoses
+            tableViewCount += 1
+           return cell
+            
+        case 1:
+            tableView.register(UINib(nibName: "Time1TableViewCell", bundle: nil), forCellReuseIdentifier: "time1")
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "time1", for: indexPath) as! Time1TableViewCell
+            cell.timeLabel.text = drugDataArray?[indexPath.row].time1
+            return cell
+        default:
+            return UITableViewCell()
+        }
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath)
+//        if let drugData = drugDataArray?[indexPath.row] {
+//            cell.textLabel?.text = drugData.drugName
+//            cell.textLabel?.text = drugData.drugCatergory
+//            cell.textLabel?.text = drugData.numberOfDoses
+//            cell.accessoryType = drugData.done == true ? .checkmark: .none
+//
+//            return cell
+//        }
+//
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let drugDone = drugDataArray?[indexPath.row] {
+            do {
+                try realm.write({
+                    drugDone.done = !drugDone.done
+                })
+            } catch {
+                print("Check error:\(error)")
+            }
+        }
+        tableView.reloadData()
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

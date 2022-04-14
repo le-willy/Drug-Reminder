@@ -5,8 +5,8 @@
 //  Created by Willy Sato on 2022/04/05.
 //
 
-import Foundation
 import UIKit
+import RealmSwift
 
 class RegisterViewController: UIViewController {
     
@@ -19,10 +19,10 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var time4TextField: UITextField!
 
     
-    var drugData = [DrugData]()
+    var drugData = DrugModel()
     
-    var category = ["category name","category name2","category name3","category name4"]
-    var dosesPerDay = ["1", "2", "3" ,"4","5","6"]
+    let category = ["category name","category name2","category name3","category name4"]
+    let dosesPerDay = ["1回","2回","3回","4回"]
     
     let categoryPickerView = UIPickerView()
     let dosesPickerView = UIPickerView()
@@ -31,6 +31,7 @@ class RegisterViewController: UIViewController {
         let datePicker = UIDatePicker()
         datePicker.timeZone = .current
         datePicker.datePickerMode = .time
+        datePicker.minuteInterval = 10
         datePicker.locale = Locale(identifier: "ja-JP")
         datePicker.preferredDatePickerStyle = .wheels
 
@@ -43,14 +44,15 @@ class RegisterViewController: UIViewController {
         
         return dateFormat
     }
-
+    
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryPickerView.dataSource = self
         categoryPickerView.delegate = self
         dosesPickerView.dataSource = self
-        dosesPickerView.dataSource = self
+        dosesPickerView.delegate = self
         
         categoryPickerView.tag = 1
         dosesPickerView.tag = 2
@@ -107,10 +109,39 @@ class RegisterViewController: UIViewController {
             time4TextField.text = dateFormatter.string(from: sender.date)
         }
     }
+    
+    @IBAction func registerPressed(_ sender: UIBarButtonItem) {
+        if drugNameTextField != nil {
+            let newDrug = DrugModel()
+            newDrug.drugName = drugNameTextField.text!
+            newDrug.drugCatergory = drugCategoryTextField.text!
+            newDrug.numberOfDoses = numberOfDosesTextField.text!
+            newDrug.time1 = time1TextField.text!
+            newDrug.time2 = time2TextField.text!
+            newDrug.time3 = time3TextField.text!
+            newDrug.time4 = time4TextField.text!
+            saveData(data: newDrug)
+            
+            print("data saved: \(numberOfDosesTextField.text!)")
+        }
+
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func saveData(data: DrugModel) {
+        do {
+            try realm.write({
+                realm.add(data)
+            })
+        } catch {
+            print("Error saving: \(error)")
+        }
+    }
+    
 }
     
 extension RegisterViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-
         func numberOfComponents(in pickerView: UIPickerView) -> Int {
             return 1
         }
@@ -150,4 +181,3 @@ extension RegisterViewController: UIPickerViewDataSource, UIPickerViewDelegate {
             }
         }
     }
-
