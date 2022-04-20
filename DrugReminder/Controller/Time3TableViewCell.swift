@@ -1,20 +1,20 @@
 //
-//  Time1TableViewCell.swift
+//  Time3TableViewCell.swift
 //  DrugReminder
 //
-//  Created by Willy Sato on 2022/04/19.
+//  Created by Willy Sato on 2022/04/20.
 //
 
 import UIKit
 
-class Time1TableViewCell: UITableViewCell {
+class Time3TableViewCell: UITableViewCell {
     
-    @IBOutlet var time1Label: UILabel!
+    @IBOutlet var time3Label: UILabel!
     
-    static let identifier = "Time1TableViewCell"
+    static let identifier = "Time3TableViewCell"
     
     static func nib() -> UINib {
-        return UINib(nibName: "Time1TableViewCell", bundle: nil)
+        return UINib(nibName: "Time3TableViewCell", bundle: nil)
     }
 
     override func awakeFromNib() {
