@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     //    var drugDataArray: Results<DrugModel>?
     var drugDataArray: [DrugModel] = []
     
-    let section = ["1","2","3","4"]
+    let sectionName = ["1","2","3","4"]
     var dayValue = 0
     var count = 0
     
@@ -93,64 +93,37 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return drugDataArray.count
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return drugDataArray[section].drugName
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return drugDataArray.count
+    }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch count {
+
+        let drugData = drugDataArray[indexPath.row]
+
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "homeCell")
+        
+        switch indexPath.row {
         case 0:
-            tableView.register(DrugNameTableViewCell.nib(), forCellReuseIdentifier: DrugNameTableViewCell.identifier)
-            let cell = tableView.dequeueReusableCell(withIdentifier: DrugNameTableViewCell.identifier, for: indexPath) as! DrugNameTableViewCell
-            cell.nameLabel.text = drugDataArray[indexPath.row].drugName
-            cell.categoryLabel.text = drugDataArray[indexPath.row].drugCatergory
-            cell.dosesPerDayLabel.text = drugDataArray[indexPath.row].numberOfDoses
-            print("FirstCell:\(count)")
-            count += 1
-            return cell
+            cell.textLabel?.text = drugData.numberOfDoses
+            cell.detailTextLabel?.text = drugData.drugCatergory
         case 1:
-            tableView.register(Time1TableViewCell.nib(), forCellReuseIdentifier: Time1TableViewCell.identifier)
-            let cell = tableView.dequeueReusableCell(withIdentifier: Time1TableViewCell.identifier, for: indexPath) as! Time1TableViewCell
-            cell.time1Label.text = drugDataArray[indexPath.row].time1
-            cell.accessoryType = drugDataArray[indexPath.row].done == true ? .checkmark: .none
-            print("Time1Cell:\(count)")
-            count += 1
-            return cell
+            cell.textLabel?.text = drugData.time1
         case 2:
-            tableView.register(Time2TableViewCell.nib(), forCellReuseIdentifier: Time2TableViewCell.identifier)
-            let cell = tableView.dequeueReusableCell(withIdentifier: Time2TableViewCell.identifier, for: indexPath) as! Time2TableViewCell
-            cell.time2Label.text = drugDataArray[indexPath.row].time2
-            print("Time2Cell:\(count)")
-            count += 1
-            return cell
+            cell.textLabel?.text = drugData.time2
         case 3:
-            tableView.register(Time3TableViewCell.nib(), forCellReuseIdentifier: Time3TableViewCell.identifier)
-            let cell = tableView.dequeueReusableCell(withIdentifier: Time3TableViewCell.identifier, for: indexPath) as! Time3TableViewCell
-            cell.time3Label.text = drugDataArray[indexPath.row].time3
-            print("Time3Cell:\(count)")
-            count += 1
-            return cell
-        case 4:
-            tableView.register(Time4TableViewCell.nib(), forCellReuseIdentifier: Time4TableViewCell.identifier)
-            let cell = tableView.dequeueReusableCell(withIdentifier: Time4TableViewCell.identifier, for: indexPath) as! Time4TableViewCell
-            cell.time4Label.text = drugDataArray[indexPath.row].time4
-            print("Time4Cell:\(count)")
-            return cell
+            cell.textLabel?.text = drugData.time3
         default:
             return UITableViewCell()
         }
+        cell.accessoryType = drugDataArray[indexPath.row].done == true ? .checkmark: .none
         
-        
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath)
-        //        cell.textLabel?.text = drugDataArray[indexPath.row].drugName
-        //        cell.textLabel?.text = drugDataArray[indexPath.row].drugCatergory
-        //        cell.textLabel?.text = drugDataArray[indexPath.row].numberOfDoses
-        //        cell.textLabel?.text = drugDataArray[indexPath.row].time1
-        //        cell.textLabel?.text = drugDataArray[indexPath.row].time2
-        //        cell.textLabel?.text = drugDataArray[indexPath.row].time3
-        //        cell.textLabel?.text = drugDataArray[indexPath.row].time4
-        //
-        //        cell.accessoryType = drugDataArray[indexPath.row].done == true ? .checkmark: .none
-        
-//        return cell
-        
+        return cell
         
     }
     
@@ -169,6 +142,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             drugData.done = !drugData.done
         })
         tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadData()
     }
 }
 
