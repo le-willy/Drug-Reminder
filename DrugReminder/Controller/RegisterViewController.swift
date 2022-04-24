@@ -45,6 +45,16 @@ class RegisterViewController: UIViewController {
         return dateFormat
     }
     
+    
+    var timeFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .japanese)
+        formatter.locale = .current
+        formatter.timeZone = .current
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }
+    
     let realm = try! Realm()
     
     override func viewDidLoad() {
@@ -111,20 +121,20 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerPressed(_ sender: UIBarButtonItem) {
-        if drugNameTextField != nil {
-            let newDrug = DrugModel()
-            newDrug.drugName = drugNameTextField.text!
-            newDrug.drugCatergory = drugCategoryTextField.text!
-            newDrug.numberOfDoses = numberOfDosesTextField.text!
-            newDrug.time1 = time1TextField.text!
-            newDrug.time2 = time2TextField.text!
-            newDrug.time3 = time3TextField.text!
-            newDrug.time4 = time4TextField.text!
-            saveData(data: newDrug)
-            
-            print("data saved: \(numberOfDosesTextField.text!)")
+        
+        if let drugName = drugNameTextField.text {
+            drugData.drugName = drugName
         }
-
+        if let numberOfDoses = numberOfDosesTextField.text {
+            drugData.numberOfDoses = numberOfDoses
+        }
+        if let time1 = time1TextField.text {
+            var time = timeFormatter.date(from: time1)
+            let dosingTime = DosingTime()
+            dosingTime.at = time
+            drugData.dosingTime.append(dosingTime)
+        }
+        saveData(data: drugData)
         
         navigationController?.popViewController(animated: true)
     }

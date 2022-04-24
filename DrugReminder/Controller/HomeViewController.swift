@@ -18,7 +18,6 @@ class HomeViewController: UIViewController {
     //    var drugDataArray: Results<DrugModel>?
     var drugDataArray: [DrugModel] = []
     
-    let sectionName = ["1","2","3","4"]
     var dayValue = 0
     var count = 0
     
@@ -28,6 +27,14 @@ class HomeViewController: UIViewController {
         dateFormatter.dateFormat = "MM月dd日"
         
         return dateFormatter
+    }
+    
+    var timeFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        
+        return formatter
     }
     
     override func viewDidLoad() {
@@ -85,8 +92,8 @@ class HomeViewController: UIViewController {
         let result = realm.objects(DrugModel.self)
         drugDataArray = Array(result)
     }
-    
 }
+//MARK: - TableView
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -107,20 +114,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let drugData = drugDataArray[indexPath.row]
 
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "homeCell")
-        
-        switch indexPath.row {
-        case 0:
-            cell.textLabel?.text = drugData.numberOfDoses
-            cell.detailTextLabel?.text = drugData.drugCatergory
-        case 1:
-            cell.textLabel?.text = drugData.time1
-        case 2:
-            cell.textLabel?.text = drugData.time2
-        case 3:
-            cell.textLabel?.text = drugData.time3
-        default:
-            return UITableViewCell()
-        }
+        print(indexPath.row)
+        print(Array(drugData.dosingTime))
+//        if let dosingTime = Array(drugData.dosingTime)[indexPath.row].at {
+//            cell.textLabel?.text = timeFormatter.string(from: dosingTime)
+//        }
+
         cell.accessoryType = drugDataArray[indexPath.row].done == true ? .checkmark: .none
         
         return cell

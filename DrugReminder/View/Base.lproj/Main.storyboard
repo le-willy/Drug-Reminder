@@ -97,10 +97,6 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="WEJ-ME-Shk" id="5M1-we-9Po"/>
-                                    <outlet property="delegate" destination="WEJ-ME-Shk" id="bic-1Q-Avv"/>
-                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y4w-cc-j4z"/>
@@ -108,13 +104,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="カレンダー" image="calendar" catalog="system" id="hq0-1g-yyv"/>
                     <navigationItem key="navigationItem" title="カレンダー" id="WHX-JN-3h7"/>
-                    <connections>
-                        <outlet property="calendarView" destination="4H1-co-1Mh" id="3xa-pT-aLt"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfJ-2U-r44" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-907.24637681159425" y="1080.8035714285713"/>
+            <point key="canvasLocation" x="-907" y="1205"/>
         </scene>
         <!--設定-->
         <scene sceneID="h9W-uC-WJI">
@@ -124,48 +117,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17Q-oG-qzg">
-                                <rect key="frame" x="0.0" y="88" width="414" height="100"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お薬の服用時間を過ぎてもチェックされてない時の通知間隔" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFY-mV-2mc">
-                                        <rect key="frame" x="8" y="5" width="398" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9S6-C2-5Tl">
-                                        <rect key="frame" x="8" y="54" width="398" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eNo-3B-use">
+                                <rect key="frame" x="0.0" y="274" width="414" height="539"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="AFY-mV-2mc" firstAttribute="leading" secondItem="17Q-oG-qzg" secondAttribute="leading" constant="8" id="3dc-ch-XAa"/>
-                                    <constraint firstItem="AFY-mV-2mc" firstAttribute="top" secondItem="17Q-oG-qzg" secondAttribute="top" constant="5" id="9cp-7T-sDr"/>
-                                    <constraint firstAttribute="trailing" secondItem="9S6-C2-5Tl" secondAttribute="trailing" constant="8" id="CAO-je-qe2"/>
-                                    <constraint firstItem="9S6-C2-5Tl" firstAttribute="leading" secondItem="17Q-oG-qzg" secondAttribute="leading" constant="8" id="Kct-Ho-bed"/>
-                                    <constraint firstAttribute="height" constant="100" id="cW6-MX-YPd"/>
-                                    <constraint firstAttribute="bottom" secondItem="9S6-C2-5Tl" secondAttribute="bottom" constant="10" id="mXJ-Z6-T6u"/>
-                                    <constraint firstItem="9S6-C2-5Tl" firstAttribute="top" secondItem="AFY-mV-2mc" secondAttribute="bottom" constant="8" id="n50-ra-Gay"/>
-                                    <constraint firstAttribute="trailing" secondItem="AFY-mV-2mc" secondAttribute="trailing" constant="8" id="rGt-Rq-6Nt"/>
-                                </constraints>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="160" translatesAutoresizingMaskIntoConstraints="NO" id="qXQ-2V-Fn7">
-                                <rect key="frame" x="10" y="208" width="384" height="31"/>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="9E5-3a-1Wa">
+                                <rect key="frame" x="20" y="98" width="374" height="31"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通知を許可する" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mx-QD-CqE">
-                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="163.5" id="04h-m6-28A"/>
-                                            <constraint firstAttribute="height" constant="31" id="yrr-dV-6pe"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mx-QD-CqE">
+                                        <rect key="frame" x="0.0" y="0.0" width="318" height="31"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVD-tc-Xh9">
-                                        <rect key="frame" x="323.5" y="0.0" width="62.5" height="31"/>
+                                        <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="onOffSwitch:" destination="4DZ-XP-Y9i" eventType="valueChanged" id="W0g-kK-vjx"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                             </stackView>
@@ -173,20 +143,64 @@
                         <viewLayoutGuide key="safeArea" id="BKk-Nq-asE"/>
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
                         <constraints>
-                            <constraint firstItem="qXQ-2V-Fn7" firstAttribute="leading" secondItem="BKk-Nq-asE" secondAttribute="leading" constant="10" id="IX4-gt-k5e"/>
-                            <constraint firstItem="BKk-Nq-asE" firstAttribute="trailing" secondItem="qXQ-2V-Fn7" secondAttribute="trailing" constant="20" id="QzS-el-xYB"/>
-                            <constraint firstItem="17Q-oG-qzg" firstAttribute="trailing" secondItem="BKk-Nq-asE" secondAttribute="trailing" id="etv-wJ-kRo"/>
-                            <constraint firstItem="qXQ-2V-Fn7" firstAttribute="top" secondItem="17Q-oG-qzg" secondAttribute="bottom" constant="20" id="jzc-gP-tRc"/>
-                            <constraint firstItem="17Q-oG-qzg" firstAttribute="leading" secondItem="BKk-Nq-asE" secondAttribute="leading" id="lLj-vy-deF"/>
-                            <constraint firstItem="17Q-oG-qzg" firstAttribute="top" secondItem="BKk-Nq-asE" secondAttribute="top" id="zgw-Ea-mlB"/>
+                            <constraint firstItem="9E5-3a-1Wa" firstAttribute="leading" secondItem="BKk-Nq-asE" secondAttribute="leading" constant="20" id="AuC-hf-BLh"/>
+                            <constraint firstItem="9E5-3a-1Wa" firstAttribute="top" secondItem="BKk-Nq-asE" secondAttribute="top" constant="10" id="cku-v8-2Z9"/>
+                            <constraint firstItem="BKk-Nq-asE" firstAttribute="trailing" secondItem="9E5-3a-1Wa" secondAttribute="trailing" constant="20" id="s3b-nt-762"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="yui-fe-wJx"/>
-                    <navigationItem key="navigationItem" title="設定" id="92w-oR-2FH"/>
+                    <navigationItem key="navigationItem" title="設定" id="92w-oR-2FH">
+                        <barButtonItem key="leftBarButtonItem" title="Test" id="csz-lW-cT3">
+                            <connections>
+                                <action selector="testButtonPressed:" destination="4DZ-XP-Y9i" id="zCa-gX-WmK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="notificationLabel" destination="3mx-QD-CqE" id="iDJ-su-Pwr"/>
+                        <outlet property="tableView" destination="eNo-3B-use" id="7Jb-fq-wDQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYY-Uq-NAO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5.7971014492753632" y="1080.8035714285713"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="111-kw-9mB">
+            <objects>
+                <viewController id="arI-lq-FXQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KWb-d2-hvi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17Q-oG-qzg">
+                                <rect key="frame" x="0.0" y="138.5" width="414" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9S6-C2-5Tl">
+                                        <rect key="frame" x="8" y="33.5" width="468" height="56.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="お薬の服用時間を過ぎてもチェックされてない時の通知間隔" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFY-mV-2mc">
+                                <rect key="frame" x="11" y="76" width="404" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YNK-rS-ONY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wXH-rq-yOf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="746.37681159420299" y="1071.4285714285713"/>
         </scene>
         <!--お薬新規登録-->
         <scene sceneID="EEa-IZ-6hE">
@@ -441,7 +455,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kDJ-Ij-WaF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-907" y="356"/>
+            <point key="canvasLocation" x="-906" y="465"/>
         </scene>
     </scenes>
     <resources>

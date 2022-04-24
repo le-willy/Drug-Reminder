@@ -11,8 +11,6 @@ import RealmSwift
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print(Realm.Configuration.defaultConfiguration.fileURL)
         do {
@@ -20,8 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("error initialising realm: \(error)")
         }
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {(_, _) in})
         return true
     }
+    
 
     // MARK: UISceneSession Lifecycle
 
