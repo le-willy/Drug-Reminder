@@ -50,11 +50,11 @@ class RegisterViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .japanese)
         formatter.locale = .current
-        formatter.timeZone = .current
+        formatter.timeZone = TimeZone(identifier: "UTC")
         formatter.dateFormat = "HH:mm"
         return formatter
     }
-    
+
     let realm = try! Realm()
     
     override func viewDidLoad() {
