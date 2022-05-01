@@ -93,17 +93,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4H1-co-1Mh" customClass="FSCalendar">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4H1-co-1Mh" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="XYf-Zd-lJJ" id="jf8-3d-W45"/>
+                                    <outlet property="delegate" destination="XYf-Zd-lJJ" id="YNq-G4-f41"/>
+                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y4w-cc-j4z"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="4H1-co-1Mh" firstAttribute="leading" secondItem="y4w-cc-j4z" secondAttribute="leading" id="SLQ-nD-Jxh"/>
+                            <constraint firstItem="4H1-co-1Mh" firstAttribute="bottom" secondItem="y4w-cc-j4z" secondAttribute="bottom" id="k8s-CQ-e0J"/>
+                            <constraint firstItem="4H1-co-1Mh" firstAttribute="top" secondItem="y4w-cc-j4z" secondAttribute="top" id="nbZ-Em-xm6"/>
+                            <constraint firstItem="4H1-co-1Mh" firstAttribute="trailing" secondItem="y4w-cc-j4z" secondAttribute="trailing" id="qn1-DJ-eeg"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="カレンダー" image="calendar" catalog="system" id="hq0-1g-yyv"/>
                     <navigationItem key="navigationItem" title="カレンダー" id="WHX-JN-3h7"/>
+                    <connections>
+                        <outlet property="calendar" destination="4H1-co-1Mh" id="WcX-Q2-8ec"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfJ-2U-r44" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -239,34 +257,8 @@
                                             <constraint firstAttribute="trailing" secondItem="5fU-di-Bdn" secondAttribute="trailing" constant="8" id="oPv-7Y-IPt"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQ1-yX-inn" userLabel="DrugCategory">
-                                        <rect key="frame" x="0.0" y="110" width="414" height="90"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お薬の種類" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rER-va-aK9">
-                                                <rect key="frame" x="8" y="8" width="116.5" height="27.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xpp-M7-mRK">
-                                                <rect key="frame" x="8" y="39.5" width="398" height="35"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="xpp-M7-mRK" firstAttribute="leading" secondItem="fQ1-yX-inn" secondAttribute="leading" constant="8" id="Jde-HA-ADd"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rER-va-aK9" secondAttribute="trailing" constant="20" symbolic="YES" id="XlE-Ql-yhI"/>
-                                            <constraint firstItem="rER-va-aK9" firstAttribute="top" secondItem="fQ1-yX-inn" secondAttribute="top" constant="8" id="bSa-FG-Dp9"/>
-                                            <constraint firstAttribute="height" constant="90" id="eOO-6r-rV0"/>
-                                            <constraint firstAttribute="trailing" secondItem="xpp-M7-mRK" secondAttribute="trailing" constant="8" id="gkp-uo-kuw"/>
-                                            <constraint firstItem="xpp-M7-mRK" firstAttribute="top" secondItem="rER-va-aK9" secondAttribute="bottom" constant="4" id="kvh-A7-B9O"/>
-                                            <constraint firstItem="rER-va-aK9" firstAttribute="leading" secondItem="fQ1-yX-inn" secondAttribute="leading" constant="8" id="uSi-uM-tbv"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nkY-fV-TJr" userLabel="NumberOfDoses">
-                                        <rect key="frame" x="0.0" y="220" width="414" height="90"/>
+                                        <rect key="frame" x="0.0" y="110" width="414" height="90"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服用回数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yT-gi-Mel">
                                                 <rect key="frame" x="8" y="8" width="93.5" height="27.5"/>
@@ -292,7 +284,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k2M-5k-BD1" userLabel="TimeToTaken">
-                                        <rect key="frame" x="0.0" y="330" width="414" height="215"/>
+                                        <rect key="frame" x="0.0" y="220" width="414" height="325"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服用時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oB-zn-3Qb">
                                                 <rect key="frame" x="8" y="8" width="93.5" height="27.5"/>
@@ -341,20 +333,6 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="4Lo-W7-wq5" firstAttribute="top" secondItem="p0W-Pu-jvu" secondAttribute="top" id="0US-uX-2X6"/>
-                                    <constraint firstAttribute="trailing" secondItem="k2M-5k-BD1" secondAttribute="trailing" id="5Jc-Nl-EbX"/>
-                                    <constraint firstAttribute="trailing" secondItem="nkY-fV-TJr" secondAttribute="trailing" id="9Hq-d2-5SX"/>
-                                    <constraint firstAttribute="trailing" secondItem="4Lo-W7-wq5" secondAttribute="trailing" id="N7d-HB-fic"/>
-                                    <constraint firstItem="k2M-5k-BD1" firstAttribute="leading" secondItem="p0W-Pu-jvu" secondAttribute="leading" id="PZ7-A8-Bwy"/>
-                                    <constraint firstAttribute="bottom" secondItem="k2M-5k-BD1" secondAttribute="bottom" id="URX-Nq-76q"/>
-                                    <constraint firstItem="nkY-fV-TJr" firstAttribute="leading" secondItem="p0W-Pu-jvu" secondAttribute="leading" id="evM-6l-MAg"/>
-                                    <constraint firstAttribute="trailing" secondItem="k2M-5k-BD1" secondAttribute="trailing" id="ey2-2O-rPu"/>
-                                    <constraint firstItem="fQ1-yX-inn" firstAttribute="leading" secondItem="p0W-Pu-jvu" secondAttribute="leading" id="k1g-Xy-aAb"/>
-                                    <constraint firstAttribute="trailing" secondItem="fQ1-yX-inn" secondAttribute="trailing" id="oVg-ZN-plX"/>
-                                    <constraint firstItem="k2M-5k-BD1" firstAttribute="leading" secondItem="p0W-Pu-jvu" secondAttribute="leading" id="pwu-Pa-Xog"/>
-                                    <constraint firstItem="4Lo-W7-wq5" firstAttribute="leading" secondItem="p0W-Pu-jvu" secondAttribute="leading" id="ydg-9o-ygP"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Zws-lF-DRE"/>
@@ -374,7 +352,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="drugCategoryTextField" destination="xpp-M7-mRK" id="HHF-yW-Nf4"/>
                         <outlet property="drugNameTextField" destination="5fU-di-Bdn" id="rE8-cE-c9z"/>
                         <outlet property="numberOfDosesTextField" destination="rqX-0V-b6r" id="moi-Fg-Gxk"/>
                         <outlet property="time1TextField" destination="OiX-US-Voj" id="tTS-BZ-QeX"/>

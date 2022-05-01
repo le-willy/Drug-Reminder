@@ -15,11 +15,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let realm = try! Realm()
-    //    var drugDataArray: Results<DrugModel>?
     var drugDataArray: [DrugModel] = []
+    var dosingTime = DosingTime()
     
     var dayValue = 0
-    var count = 0
     
     var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
@@ -31,9 +30,11 @@ class HomeViewController: UIViewController {
     
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        
+//        formatter.dateStyle = .medium
+//        formatter.timeStyle = .short
+        formatter.calendar = Calendar(identifier: .japanese)
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        formatter.dateFormat = "HH:mm"
         return formatter
     }
     
@@ -72,6 +73,12 @@ class HomeViewController: UIViewController {
         dayValue += 1
         let nextDay = dateFormatter.string(from: dayAfter)
         dayLabel.text = nextDay
+//        let latestDate = realm.objects(DosingTime.self).sorted(byKeyPath: "at", ascending: false)
+//        print(latestDate)
+
+        
+        
+        tableView.reloadData()
     }
     
     
@@ -83,11 +90,12 @@ class HomeViewController: UIViewController {
         
         let previousDay = dateFormatter.string(from: dayBefore)
         dayLabel.text = previousDay
+        
+        let result = realm.objects(DosingTime.self)
+        let testResult = result.filter("at == %@", dayBefore)
+        print(testResult)
     }
     
-    //    func loadData() {
-    //        drugDataArray = realm.objects(DrugModel.self)
-    //    }
     func loadData() {
         let result = realm.objects(DrugModel.self)
         drugDataArray = Array(result)
@@ -98,48 +106,37 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return drugDataArray.count
+        return drugDataArray[section].dosingTime.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return drugDataArray[section].drugName
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return drugDataArray.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let drugData = drugDataArray[indexPath.row]
-
+        let drugData = drugDataArray[indexPath.section]
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "homeCell")
-        print(indexPath.row)
-        print(Array(drugData.dosingTime))
-//        if let dosingTime = Array(drugData.dosingTime)[indexPath.row].at {
-//            cell.textLabel?.text = timeFormatter.string(from: dosingTime)
-//        }
-
-        cell.accessoryType = drugDataArray[indexPath.row].done == true ? .checkmark: .none
         
+        if let dosingTime = Array(drugData.dosingTime)[indexPath.row].at {
+            cell.textLabel?.text = timeFormatter.string(from: dosingTime)
+            cell.accessoryType = drugData.dosingTime[indexPath.row].done == true ? .checkmark: .none
+        }
         return cell
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //                if let drugDone = drugDataArray[indexPath.row] {
-        //                    do {
-        //                        try realm.write({
-        //                            drugDone.done = !drugDone.done
-        //                        })
-        //                    } catch {
-        //                        print("Check error:\(error)")
-        //                    }
-        //                }
-        let drugData = drugDataArray[indexPath.row]
+
+        let drugData = drugDataArray[indexPath.section]
         try! realm.write({
-            drugData.done = !drugData.done
+            drugData.dosingTime[indexPath.row].done = !drugData.dosingTime[indexPath.row].done
         })
+        
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }

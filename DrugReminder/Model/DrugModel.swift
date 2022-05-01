@@ -11,8 +11,8 @@ import RealmSwift
 class DrugModel: Object {
     @objc dynamic var drugName: String = ""
     @objc dynamic var drugCatergory: String = ""
-    @objc dynamic var done: Bool = false
     @objc dynamic var numberOfDoses: String = ""
     
     var dosingTime = List<DosingTime>()
+
 }

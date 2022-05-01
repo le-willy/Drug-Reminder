@@ -10,4 +10,6 @@ import RealmSwift
 
 class DosingTime: Object {
     @objc dynamic var at: Date?
+    @objc dynamic var done: Bool = false
+
 }

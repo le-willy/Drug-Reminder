@@ -11,7 +11,6 @@ import RealmSwift
 class RegisterViewController: UIViewController {
     
     @IBOutlet weak var drugNameTextField: UITextField!
-    @IBOutlet weak var drugCategoryTextField: UITextField!
     @IBOutlet weak var numberOfDosesTextField: UITextField!
     @IBOutlet weak var time1TextField: UITextField!
     @IBOutlet weak var time2TextField: UITextField!
@@ -21,10 +20,8 @@ class RegisterViewController: UIViewController {
     
     var drugData = DrugModel()
     
-    let category = ["category name","category name2","category name3","category name4"]
     let dosesPerDay = ["1回","2回","3回","4回"]
     
-    let categoryPickerView = UIPickerView()
     let dosesPickerView = UIPickerView()
     
     var datePicker: UIDatePicker {
@@ -49,7 +46,6 @@ class RegisterViewController: UIViewController {
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .japanese)
-        formatter.locale = .current
         formatter.timeZone = TimeZone(identifier: "UTC")
         formatter.dateFormat = "HH:mm"
         return formatter
@@ -59,14 +55,9 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        categoryPickerView.dataSource = self
-        categoryPickerView.delegate = self
         dosesPickerView.dataSource = self
         dosesPickerView.delegate = self
-        
-        categoryPickerView.tag = 1
-        dosesPickerView.tag = 2
-        
+ 
         configureDatePicker()
         
         let toolbar = UIToolbar()
@@ -76,14 +67,12 @@ class RegisterViewController: UIViewController {
         toolbar.setItems([doneButton], animated: true)
         
         drugNameTextField.inputAccessoryView = toolbar
-        drugCategoryTextField.inputAccessoryView = toolbar
         numberOfDosesTextField.inputAccessoryView = toolbar
         time1TextField.inputAccessoryView = toolbar
         time2TextField.inputAccessoryView = toolbar
         time3TextField.inputAccessoryView = toolbar
         time4TextField.inputAccessoryView = toolbar
         
-        drugCategoryTextField.inputView = categoryPickerView
         numberOfDosesTextField.inputView = dosesPickerView
     }
     
@@ -129,7 +118,25 @@ class RegisterViewController: UIViewController {
             drugData.numberOfDoses = numberOfDoses
         }
         if let time1 = time1TextField.text {
-            var time = timeFormatter.date(from: time1)
+            let time = timeFormatter.date(from: time1)
+            let dosingTime = DosingTime()
+            dosingTime.at = time
+            drugData.dosingTime.append(dosingTime)
+        }
+        if let time2 = time2TextField.text {
+            let time = timeFormatter.date(from: time2)
+            let dosingTime = DosingTime()
+            dosingTime.at = time
+            drugData.dosingTime.append(dosingTime)
+        }
+        if let time3 = time3TextField.text {
+            let time = timeFormatter.date(from: time3)
+            let dosingTime = DosingTime()
+            dosingTime.at = time
+            drugData.dosingTime.append(dosingTime)
+        }
+        if let time4 = time4TextField.text {
+            let time = timeFormatter.date(from: time4)
             let dosingTime = DosingTime()
             dosingTime.at = time
             drugData.dosingTime.append(dosingTime)
@@ -157,37 +164,18 @@ extension RegisterViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         }
 
         func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            switch pickerView.tag {
-            case 1:
-                return category.count
-            case 2:
-                return dosesPerDay.count
-            default:
-                return 1
-            }
+            return dosesPerDay.count
         }
 
         func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            switch pickerView.tag {
-            case 1:
-                return category[row]
-            case 2:
-                return dosesPerDay[row]
-            default:
-                return "error"
-            }
+            return dosesPerDay[row]
         }
 
-        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            switch pickerView.tag {
-            case 1:
-                drugCategoryTextField.text = category[row]
-                drugCategoryTextField.resignFirstResponder()
-            case 2:
-                numberOfDosesTextField.text = dosesPerDay[row]
-                numberOfDosesTextField.resignFirstResponder()
-            default:
-                return
-            }
-        }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        numberOfDosesTextField.text = dosesPerDay[row]
+        numberOfDosesTextField.resignFirstResponder()
+        
     }
+}
+

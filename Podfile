@@ -7,6 +7,7 @@ target 'DrugReminder' do
 
   # Pods for DrugReminder
   pod 'RealmSwift'
+  pod 'FSCalendar'
 
   target 'DrugReminderTests' do
     inherit! :search_paths
