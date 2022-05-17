@@ -13,16 +13,29 @@ import FSCalendar
 class CalendarViewController: UIViewController {
     
     @IBOutlet weak var calendar: FSCalendar!
+    @IBOutlet weak var tableView: UITableView!
     
     let realm = try! Realm()
     
-    var drugModel: [DrugModel] = []
+    var drugDataArray: [DrugModel] = []
+    
+    var timeFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .japanese)
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         calendarSetup()
         calendar.delegate = self
         calendar.dataSource = self
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     func calendarSetup() {
@@ -46,21 +59,51 @@ class CalendarViewController: UIViewController {
     
     func loadData() {
         let result = realm.objects(DrugModel.self)
-        drugModel = Array(result)
+        drugDataArray = Array(result)
     }
 }
 
+//MARK: - FSCalendarDelegate
+
 extension CalendarViewController: FSCalendarDelegate {
     // You can do something when a date is selected
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        calendar.deselect(date)
-    }
+//    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+//        calendar.deselect(date)
+//    }
     
 }
+
+//MARK: - FSCalendarDataSource
 
 extension CalendarViewController: FSCalendarDataSource {
     // And event dot for some days
     func calendar(calendar: FSCalendar!, hasEventForDate date: NSDate!) -> Bool {
         return true
+    }
+}
+
+//MARK: - TableView
+
+extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return drugDataArray[section].dosingTime.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return drugDataArray[section].drugName
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let drugData = drugDataArray[indexPath.section]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        if let dosingTime = Array(drugData.dosingTime)[indexPath.row].at {
+            cell.textLabel?.text = timeFormatter.string(from: dosingTime)
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

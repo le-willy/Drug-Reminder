@@ -16,11 +16,11 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var time2TextField: UITextField!
     @IBOutlet weak var time3TextField: UITextField!
     @IBOutlet weak var time4TextField: UITextField!
-
+    
     
     var drugData = DrugModel()
     
-    let dosesPerDay = ["1回","2回","3回","4回"]
+    let dosesPerDay = [1: "1回",2: "2回",3: "3回",4: "4回"]
     
     let dosesPickerView = UIPickerView()
     
@@ -28,36 +28,39 @@ class RegisterViewController: UIViewController {
         let datePicker = UIDatePicker()
         datePicker.timeZone = .current
         datePicker.datePickerMode = .time
-        datePicker.minuteInterval = 10
+        //        datePicker.minuteInterval = 10
         datePicker.locale = Locale(identifier: "ja-JP")
         datePicker.preferredDatePickerStyle = .wheels
-
+        
         return datePicker
     }
     
-    var dateFormatter: DateFormatter {
-        let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "hh:mm"
-        
-        return dateFormat
-    }
+//    var dateFormatter: DateFormatter {
+//        let dateFormat = DateFormatter()
+//        dateFormat.dateFormat = "hh:mm"
+//
+//        return dateFormat
+//    }
     
     
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .japanese)
-        formatter.timeZone = TimeZone(identifier: "UTC")
+        formatter.timeZone = TimeZone(identifier: "JST")
+        formatter.locale = .current
         formatter.dateFormat = "HH:mm"
         return formatter
     }
-
+    
     let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .yellow
         dosesPickerView.dataSource = self
         dosesPickerView.delegate = self
- 
+        numberOfDosesTextField.delegate = self
+        
         configureDatePicker()
         
         let toolbar = UIToolbar()
@@ -87,25 +90,26 @@ class RegisterViewController: UIViewController {
         time3DatePicker.addTarget(self, action: #selector(didChangeDatePicker), for: .valueChanged)
         time4DatePicker.addTarget(self, action: #selector(didChangeDatePicker), for: .valueChanged)
         
+
         time1TextField.inputView = time1DatePicker
         time2TextField.inputView = time2DatePicker
         time3TextField.inputView = time3DatePicker
         time4TextField.inputView = time4DatePicker
     }
-
+    
     @objc func doneButtonPressed() {
         view.endEditing(true)
     }
     
     @objc func didChangeDatePicker(sender: UIDatePicker) {
         if sender == time1TextField.inputView {
-            time1TextField.text = dateFormatter.string(from: sender.date)
+            time1TextField.text = timeFormatter.string(from: sender.date)
         } else if sender == time2TextField.inputView {
-            time2TextField.text = dateFormatter.string(from: sender.date)
+            time2TextField.text = timeFormatter.string(from: sender.date)
         } else if sender == time3TextField.inputView {
-            time3TextField.text = dateFormatter.string(from: sender.date)
+            time3TextField.text = timeFormatter.string(from: sender.date)
         } else if sender == time4TextField.inputView {
-            time4TextField.text = dateFormatter.string(from: sender.date)
+            time4TextField.text = timeFormatter.string(from: sender.date)
         }
     }
     
@@ -157,20 +161,20 @@ class RegisterViewController: UIViewController {
     }
     
 }
-    
+
 extension RegisterViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-        func numberOfComponents(in pickerView: UIPickerView) -> Int {
-            return 1
-        }
-
-        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            return dosesPerDay.count
-        }
-
-        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            return dosesPerDay[row]
-        }
-
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return dosesPerDay.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dosesPerDay[row]
+    }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         numberOfDosesTextField.text = dosesPerDay[row]
@@ -179,3 +183,13 @@ extension RegisterViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 }
 
+extension RegisterViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+}

@@ -16,3 +16,5 @@ class DrugModel: Object {
     var dosingTime = List<DosingTime>()
 
 }
+
+

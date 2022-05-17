@@ -10,6 +10,7 @@ import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print(Realm.Configuration.defaultConfiguration.fileURL)
@@ -19,10 +20,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("error initialising realm: \(error)")
         }
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {(_, _) in})
+        let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .sound)
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { success, error in
+            if let error = error {
+                print("Notification error:\(error)")
+            }
+        }
+        UINavigationBar.appearance().backgroundColor = .yellow
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
+        
+        UITabBar.appearance().backgroundColor = .yellow
+        UITabBar.appearance().tintColor = .systemRed
+
         return true
+        
+        
     }
-    
+        
+//    func applicationDidEnterBackground(_ application: UIApplication) {
+//        <#code#>
+//    }
+//    
+//    func applicationWillTerminate(_ application: UIApplication) {
+//        <#code#>
+//    }
+
 
     // MARK: UISceneSession Lifecycle
 

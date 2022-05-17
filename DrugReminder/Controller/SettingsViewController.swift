@@ -20,30 +20,9 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .yellow
         notificationLabel.text = "通知on/off"
-    }
-    
-    //MARK: - Notification Test Area
-    
-    @IBAction func testButtonPressed(_ sender: UIBarButtonItem) {
-        notificationTest()
-    }
-    
-    func notificationTest() {
-        let content = UNMutableNotificationContent()
-        content.title = "Hello World"
-        content.body = "My Notification Body, My Notification Body, My Notification Body"
-        content.sound = .default
-        
-        let targetDate = Date().addingTimeInterval(10)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: targetDate), repeats: false)
-        
-        let request = UNNotificationRequest(identifier: "id", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) { error in
-            if error != nil {
-                print("Notification error")
-            }
-        }
+        loadData()
     }
     
     @IBAction func onOffSwitch(_ sender: UISwitch) {
@@ -52,7 +31,7 @@ class SettingsViewController: UIViewController {
             UIApplication.shared.registerForRemoteNotifications()
         } else {
             print("off")
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["id"])
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["notification"])
         }
     }
     
