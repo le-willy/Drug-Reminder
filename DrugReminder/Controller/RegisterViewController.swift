@@ -125,25 +125,36 @@ class RegisterViewController: UIViewController {
             let time = timeFormatter.date(from: time1)
             let dosingTime = DosingTime()
             dosingTime.at = time
+            
             drugData.dosingTime.append(dosingTime)
+            
         }
         if let time2 = time2TextField.text {
             let time = timeFormatter.date(from: time2)
             let dosingTime = DosingTime()
             dosingTime.at = time
+            
+            if time2 != "" {
             drugData.dosingTime.append(dosingTime)
+            }
         }
         if let time3 = time3TextField.text {
             let time = timeFormatter.date(from: time3)
             let dosingTime = DosingTime()
             dosingTime.at = time
+            
+            if time3 != "" {
             drugData.dosingTime.append(dosingTime)
+            }
         }
         if let time4 = time4TextField.text {
             let time = timeFormatter.date(from: time4)
             let dosingTime = DosingTime()
             dosingTime.at = time
+            
+            if time4 != "" {
             drugData.dosingTime.append(dosingTime)
+            }
         }
         saveData(data: drugData)
         

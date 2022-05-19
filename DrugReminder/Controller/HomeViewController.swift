@@ -20,6 +20,10 @@ class HomeViewController: UIViewController {
     var dosingTime: [DosingTime] = []
     
     var dayValue = 0
+    var notificationIdentifier = 0
+    
+    var printVar = 0
+
     
     var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
@@ -48,8 +52,8 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
                 
         addButtonPressed()
-        
-        
+
+
     }
     override func viewWillAppear(_ animated: Bool) {
         loadData()
@@ -119,8 +123,8 @@ class HomeViewController: UIViewController {
 
     //MARK: - Notification Test Area
     
-    func sendNotification(date: DateComponents, repeatCount: DateComponents) {
-
+    func sendNotification(date: DateComponents, identifier: String) {
+        
         let notificationContent = UNMutableNotificationContent()
         notificationContent.title = "お薬リマインダー"
         notificationContent.body = "お薬の飲み忘れはございませんか？"
@@ -129,33 +133,31 @@ class HomeViewController: UIViewController {
         let date2 = Calendar.current.dateComponents([.hour, .minute], from: date1!)
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: date2, repeats: false)
-        let request = UNNotificationRequest(identifier: "notification", content: notificationContent, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "\(notificationIdentifier)", content: notificationContent, trigger: trigger)
         
+        printVar += 1
+
         
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
                 print("Notification send error:\(error)")
             }
         }
-           print("dateComponents:\(trigger)")
+
+//           print("trigger \(printVar)--------------\(trigger)----------------------")
 
         }
     
-    func setNotifications() {
-        
+     func setNotifications() {
         drugDataArray.forEach { item in
             Array(item.dosingTime).forEach { dosingTime in
                 if let components = dosingTime.at {
                     let result = Calendar.current.dateComponents(in: .current, from: components)
-                    sendNotification(date: result, repeatCount: result)
+                    sendNotification(date: result, identifier: "\(notificationIdentifier += 1)")
                 }
             }
         }
-    }
 
-    
-    @IBAction func testButtonPressed(_ sender: UIBarButtonItem) {
-        
     }
 
     
@@ -166,8 +168,10 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return drugDataArray[section].dosingTime.count
+        
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -179,26 +183,28 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let drugData = drugDataArray[indexPath.section]
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "homeCell")
         
-        if let dosingTime = Array(drugData.dosingTime)[indexPath.row].at {
-            cell.textLabel?.text = timeFormatter.string(from: dosingTime)
-            cell.accessoryType = drugData.dosingTime[indexPath.row].done == true ? .checkmark: .none
-            
-            for item in drugDataArray {
-                if item.dosingTime[indexPath.row].done == false {
+        if indexPath.row >= dosingTime.count {
+            if let dosingTime = Array(drugData.dosingTime)[indexPath.row].at {
+                cell.textLabel?.text = timeFormatter.string(from: dosingTime)
+                cell.accessoryType = drugData.dosingTime[indexPath.row].done == true ? .checkmark: .none
+                if drugData.dosingTime[indexPath.row].done == false {
                     setNotifications()
                 }
             }
-
         }
-                
-//        if drugDataArray[indexPath.row].dosingTime[indexPath.row].done == false {
-//            setNotifications()
+        
+//        drugDataArray.forEach { time in
+//            if time.dosingTime[indexPath.row].done == false {
+//                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["\(notificationIdentifier)"])
+//                setNotifications()
+//
+//            }
 //        }
-            
+        
         return cell
         
     }
@@ -210,21 +216,22 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         try! realm.write({
             drugData.dosingTime[indexPath.row].done = !drugData.dosingTime[indexPath.row].done
         })
-        
 
-
-        
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        let section = drugDataArray[indexPath.row]
         
-        deleteData()
-//        try! realm.write({
-//            realm.delete(section)
-//        })
+        let section = drugDataArray[indexPath.section]
+        
+        if let day = realm.objects(DrugModel.self).first {
+            let thisDaysWorkouts = realm.objects(DosingTime.self).filter("ANY parentCategory == %@", day)
+            try! realm.write {
+                realm.delete(thisDaysWorkouts)
+                realm.delete(section)
+            }
+        }
         drugDataArray.remove(at: indexPath.section)
         tableView.deleteSections([indexPath.section], with: .automatic)
     }

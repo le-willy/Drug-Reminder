@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        //Realm
         print(Realm.Configuration.defaultConfiguration.fileURL)
         do {
             _ = try Realm()
@@ -20,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("error initialising realm: \(error)")
         }
         
+        //Notification Authorization
         let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .sound)
         
         UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { success, error in
@@ -27,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Notification error:\(error)")
             }
         }
+        
+        // App Appearence
         UINavigationBar.appearance().backgroundColor = .yellow
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
         
@@ -37,10 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
     }
+
+    
         
-//    func applicationDidEnterBackground(_ application: UIApplication) {
-//        <#code#>
-//    }
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        
+    }
 //    
 //    func applicationWillTerminate(_ application: UIApplication) {
 //        <#code#>
