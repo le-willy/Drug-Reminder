@@ -10,8 +10,7 @@ import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-
+        
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //Realm
@@ -21,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("error initialising realm: \(error)")
         }
+        
+        
         
         //Notification Authorization
         let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .sound)

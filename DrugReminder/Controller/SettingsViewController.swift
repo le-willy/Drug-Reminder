@@ -6,51 +6,36 @@
 //
 
 import UIKit
-import RealmSwift
 
 class SettingsViewController: UIViewController {
-    let realm = try! Realm()
     
-//    var settingModel: [SettingsModel] = []
-    var settingModel: Results<SettingsModel>?
-    
-    @IBOutlet weak var notificationLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
-        notificationLabel.text = "通知on/off"
-        loadData()
+        tableView.dataSource = self
+        tableView.delegate = self
     }
-    
-    @IBAction func onOffSwitch(_ sender: UISwitch) {
-        if sender.isOn {
-            print("on")
-            UIApplication.shared.registerForRemoteNotifications()
-        } else {
-            print("off")
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["notification"])
-        }
-    }
-    
-        func loadData() {
-            settingModel = realm.objects(SettingsModel.self)
-        }
+
 }
 
 
-//extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        tableView.register(NotificationSwitchTableViewCell.uinib(), forCellReuseIdentifier: NotificationSwitchTableViewCell.indentifier)
-//        let cell = tableView.dequeueReusableCell(withIdentifier: NotificationSwitchTableViewCell.indentifier, for: indexPath) as! NotificationSwitchTableViewCell
-//
-//        return cell
-//    }
-//}
+extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableView.register(UINib(nibName: "NotificationButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "button")
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "button", for: indexPath) as! NotificationButtonTableViewCell
+
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
 
