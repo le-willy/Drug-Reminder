@@ -17,13 +17,15 @@ class HomeViewController: UIViewController {
     
     let realm = try! Realm()
     let userDefaults = UserDefaults.standard
+    let calendar = Calendar(identifier: .gregorian)
+    
     var drugDataArray: [DrugModel] = []
     var dosingTime: [DosingTime] = []
-    
     
     var dayValue = 0
     var notificationIdentifier = 0
     var arrayNumber = 0
+    var today = Date()
     
     var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
@@ -34,8 +36,6 @@ class HomeViewController: UIViewController {
     
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
-        //        formatter.dateStyle = .medium
-        //        formatter.timeStyle = .short
         formatter.calendar = Calendar(identifier: .japanese)
         formatter.timeZone = TimeZone(identifier: "JST")
         formatter.dateFormat = "HH:mm"
@@ -45,6 +45,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.overrideUserInterfaceStyle = .light
         view.backgroundColor = .yellow
         dayLabel.text = dateFormatter.string(from: Date())
         
@@ -52,14 +53,11 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         
         addButtonPressed()
-        
-        
+
     }
     override func viewWillAppear(_ animated: Bool) {
         loadData()
         tableView.reloadData()
-        //        UIApplication.shared.applicationIconBadgeNumber = -1
-        
         
     }
     
@@ -83,12 +81,25 @@ class HomeViewController: UIViewController {
         dayValue += 1
         let nextDay = dateFormatter.string(from: dayAfter)
         dayLabel.text = nextDay
-        //        let latestDate = realm.objects(DosingTime.self).sorted(byKeyPath: "at", ascending: false)
-        //        print(latestDate)
         
         
+        let startPoint = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: dayAfter)!
+        let endPoint = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: dayAfter)!
+        
+        var record: Array<DrugModel> {
+            return Array(try! Realm().objects(DrugModel.self).filter("dateCreated BETWEEN {%@, %@}", startPoint, endPoint))
+        }
+        
+        drugDataArray = record
+        
+        let date = dateFormatter.string(from: today)
+        if dayLabel.text == date {
+            loadData()
+        }
         
         tableView.reloadData()
+        
+        
     }
     
     
@@ -101,12 +112,25 @@ class HomeViewController: UIViewController {
         let previousDay = dateFormatter.string(from: dayBefore)
         dayLabel.text = previousDay
         
-        if let test = getRecords(by: dayBefore) {
-            tableView.reloadData()
-            print(test)
+        
+        let startPoint = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: dayBefore)!
+        let endPoint = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: dayBefore)!
+        
+        var record: Array<DrugModel> {
+            return Array(try! Realm().objects(DrugModel.self).filter("dateCreated BETWEEN {%@, %@}", startPoint, endPoint))
         }
+        
+        drugDataArray = record
+        
+        let date = dateFormatter.string(from: today)
+        if dayLabel.text == date {
+            loadData()
+        }
+        tableView.reloadData()
+        
     }
 
+        
     func loadData() {
         let result = realm.objects(DrugModel.self)
         drugDataArray = Array(result)
@@ -180,11 +204,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let drugData = drugDataArray[indexPath.section]
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "homeCell")
         
-        if indexPath.row >= dosingTime.count {
+        if indexPath.section >= dosingTime.count {
             if let dosingTime = Array(drugData.dosingTime)[indexPath.row].at {
                 cell.textLabel?.text = timeFormatter.string(from: dosingTime)
                 cell.accessoryType = drugData.dosingTime[indexPath.row].done == true ? .checkmark: .none
-                
             }
         }
         

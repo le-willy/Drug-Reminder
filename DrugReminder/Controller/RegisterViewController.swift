@@ -35,12 +35,13 @@ class RegisterViewController: UIViewController {
         return datePicker
     }
     
-//    var dateFormatter: DateFormatter {
-//        let dateFormat = DateFormatter()
-//        dateFormat.dateFormat = "hh:mm"
-//
-//        return dateFormat
-//    }
+    var dateFormatterToCreatedDate: DateFormatter {
+        let dateFormat = DateFormatter()
+        dateFormat.timeZone = TimeZone(identifier: "JST")
+        dateFormat.dateFormat = "yyyy-MM-dd"
+
+        return dateFormat
+    }
     
     
     var timeFormatter: DateFormatter {
@@ -56,10 +57,10 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.overrideUserInterfaceStyle = .light
         view.backgroundColor = .yellow
         dosesPickerView.dataSource = self
         dosesPickerView.delegate = self
-        numberOfDosesTextField.delegate = self
         
         configureDatePicker()
         
@@ -116,23 +117,31 @@ class RegisterViewController: UIViewController {
     @IBAction func registerPressed(_ sender: UIBarButtonItem) {
         
         if let drugName = drugNameTextField.text {
+            if drugName != "" {
             drugData.drugName = drugName
+            
+            drugData.dateCreated = Date()
+            }
         }
         if let numberOfDoses = numberOfDosesTextField.text {
+            if numberOfDoses != "" {
             drugData.numberOfDoses = numberOfDoses
+            }
         }
         if let time1 = time1TextField.text {
             let time = timeFormatter.date(from: time1)
             let dosingTime = DosingTime()
             dosingTime.at = time
             
+            if time1 != "" {
             drugData.dosingTime.append(dosingTime)
-            
+            }
         }
         if let time2 = time2TextField.text {
             let time = timeFormatter.date(from: time2)
             let dosingTime = DosingTime()
             dosingTime.at = time
+
             
             if time2 != "" {
             drugData.dosingTime.append(dosingTime)
@@ -142,6 +151,7 @@ class RegisterViewController: UIViewController {
             let time = timeFormatter.date(from: time3)
             let dosingTime = DosingTime()
             dosingTime.at = time
+
             
             if time3 != "" {
             drugData.dosingTime.append(dosingTime)
@@ -190,17 +200,6 @@ extension RegisterViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         
         numberOfDosesTextField.text = dosesPerDay[row]
         numberOfDosesTextField.resignFirstResponder()
-        
-    }
-}
-
-extension RegisterViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
         
     }
 }

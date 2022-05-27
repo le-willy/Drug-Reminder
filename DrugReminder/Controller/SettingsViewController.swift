@@ -10,12 +10,23 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    let onOffSwitch = UISwitch()
+    let userDefaults = UserDefaults.standard
+
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.overrideUserInterfaceStyle = .light
         view.backgroundColor = .yellow
+        
         tableView.dataSource = self
         tableView.delegate = self
+        onOffSwitch.isOn = userDefaults.bool(forKey: "mySwitchValue")
+    }
+    
+    @objc func switchAction(_ sender: UISwitch) {
+        userDefaults.set(sender.isOn, forKey: "mySwitchValue")
     }
 
 }
@@ -27,10 +38,13 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.register(UINib(nibName: "NotificationButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "button")
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "button", for: indexPath) as! NotificationButtonTableViewCell
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = "通知ON/OFF"
+        
+        onOffSwitch.addTarget(self, action: #selector(switchAction(_:)), for: .valueChanged)
+        cell.accessoryView = onOffSwitch
+        
         return cell
     }
     

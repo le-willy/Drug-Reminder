@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         
-        
         //Notification Authorization
         let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .sound)
         
@@ -38,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().backgroundColor = .yellow
         UITabBar.appearance().tintColor = .systemRed
+        UITabBar.appearance().unselectedItemTintColor = .systemGray
 
         return true
         

@@ -22,8 +22,7 @@
 		3F28F57027FC51C200844EAC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F56F27FC51C200844EAC /* RegisterViewController.swift */; };
 		3F28F57327FC51F700844EAC /* DrugModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F28F57227FC51F700844EAC /* DrugModel.swift */; };
 		3F31CF40281206C100FAD4F5 /* DosingTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31CF3F281206C100FAD4F5 /* DosingTime.swift */; };
-		3F55B3B928360CF00002251E /* NotificationButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55B3B728360CF00002251E /* NotificationButtonTableViewCell.swift */; };
-		3F55B3BA28360CF00002251E /* NotificationButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F55B3B828360CF00002251E /* NotificationButtonTableViewCell.xib */; };
+		3F939F34283F89DF0094CD05 /* DateExtencion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F939F33283F89DF0094CD05 /* DateExtencion.swift */; };
 		7F881F479A76FB7F909C7AFA /* Pods_DrugReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4218CBDA9893ABB4C3E57767 /* Pods_DrugReminder.framework */; };
 		BC2BF500AC45DBB3FE615CCE /* Pods_DrugReminder_DrugReminderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFDD2FD12541CE9FFBA4AD76 /* Pods_DrugReminder_DrugReminderUITests.framework */; };
 /* End PBXBuildFile section */
@@ -67,8 +66,7 @@
 		3F28F56F27FC51C200844EAC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		3F28F57227FC51F700844EAC /* DrugModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugModel.swift; sourceTree = "<group>"; };
 		3F31CF3F281206C100FAD4F5 /* DosingTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DosingTime.swift; sourceTree = "<group>"; };
-		3F55B3B728360CF00002251E /* NotificationButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationButtonTableViewCell.swift; sourceTree = "<group>"; };
-		3F55B3B828360CF00002251E /* NotificationButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationButtonTableViewCell.xib; sourceTree = "<group>"; };
+		3F939F33283F89DF0094CD05 /* DateExtencion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtencion.swift; sourceTree = "<group>"; };
 		4218CBDA9893ABB4C3E57767 /* Pods_DrugReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AA5CD909BB563934EC2D9C8 /* Pods-DrugReminderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugReminderTests.debug.xcconfig"; path = "Target Support Files/Pods-DrugReminderTests/Pods-DrugReminderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BAE08A9704C8B17015E3357 /* Pods-DrugReminderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugReminderTests.release.xcconfig"; path = "Target Support Files/Pods-DrugReminderTests/Pods-DrugReminderTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -187,8 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				3F28F53F27FC506900844EAC /* Main.storyboard */,
-				3F55B3B728360CF00002251E /* NotificationButtonTableViewCell.swift */,
-				3F55B3B828360CF00002251E /* NotificationButtonTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -198,6 +194,7 @@
 			children = (
 				3F28F57227FC51F700844EAC /* DrugModel.swift */,
 				3F31CF3F281206C100FAD4F5 /* DosingTime.swift */,
+				3F939F33283F89DF0094CD05 /* DateExtencion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -323,7 +320,6 @@
 			files = (
 				3F28F54627FC506A00844EAC /* LaunchScreen.storyboard in Resources */,
 				3F28F54327FC506A00844EAC /* Assets.xcassets in Resources */,
-				3F55B3BA28360CF00002251E /* NotificationButtonTableViewCell.xib in Resources */,
 				3F28F54127FC506900844EAC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,8 +451,8 @@
 				3F28F56C27FC517100844EAC /* CalendarViewController.swift in Sources */,
 				3F28F53E27FC506900844EAC /* HomeViewController.swift in Sources */,
 				3F28F53A27FC506900844EAC /* AppDelegate.swift in Sources */,
-				3F55B3B928360CF00002251E /* NotificationButtonTableViewCell.swift in Sources */,
 				3F28F57027FC51C200844EAC /* RegisterViewController.swift in Sources */,
+				3F939F34283F89DF0094CD05 /* DateExtencion.swift in Sources */,
 				3F31CF40281206C100FAD4F5 /* DosingTime.swift in Sources */,
 				3F28F56E27FC519C00844EAC /* SettingsViewController.swift in Sources */,
 				3F28F57327FC51F700844EAC /* DrugModel.swift in Sources */,
