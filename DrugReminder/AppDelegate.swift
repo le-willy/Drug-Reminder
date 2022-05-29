@@ -22,14 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         
-        //Notification Authorization
-        let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .sound)
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { success, error in
-            if let error = error {
-                print("Notification error:\(error)")
-            }
-        }
         
         // App Appearence
         UINavigationBar.appearance().backgroundColor = .yellow

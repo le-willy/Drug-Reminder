@@ -23,10 +23,16 @@ class SettingsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         onOffSwitch.isOn = userDefaults.bool(forKey: "mySwitchValue")
+        
     }
     
     @objc func switchAction(_ sender: UISwitch) {
-        userDefaults.set(sender.isOn, forKey: "mySwitchValue")
+//        userDefaults.set(sender.isOn, forKey: "mySwitchValue")
+        if sender.isOn == true {
+            userDefaults.set(true, forKey: "mySwitchValue")
+        } else {
+            userDefaults.set(false, forKey: "mySwitchValue")
+        }
     }
 
 }

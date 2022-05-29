@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
     
     var drugDataArray: [DrugModel] = []
     var dosingTime: [DosingTime] = []
+    var settingModel = SettingsViewController()
     
     var dayValue = 0
     var notificationIdentifier = 0
@@ -45,6 +46,21 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Notification Authorization
+        let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .sound)
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { success, error in
+            if let error = error {
+                print("Notification error:\(error)")
+            }
+            if success == true {
+                DispatchQueue.main.async {
+                    self.settingModel.userDefaults.set(true, forKey: "mySwitchValue")
+                }
+            }
+        }
+        
         self.overrideUserInterfaceStyle = .light
         view.backgroundColor = .yellow
         dayLabel.text = dateFormatter.string(from: Date())
@@ -145,7 +161,6 @@ class HomeViewController: UIViewController {
         let notificationContent = UNMutableNotificationContent()
         notificationContent.title = "お薬リマインダー"
         notificationContent.body = "お薬の飲み忘れはございませんか？"
-        
         
         drugDataArray.forEach { item in
             item.dosingTime.forEach { time in

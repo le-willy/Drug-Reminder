@@ -28,7 +28,7 @@ class RegisterViewController: UIViewController {
         let datePicker = UIDatePicker()
         datePicker.timeZone = .current
         datePicker.datePickerMode = .time
-        //        datePicker.minuteInterval = 10
+        datePicker.minuteInterval = 10
         datePicker.locale = Locale(identifier: "ja-JP")
         datePicker.preferredDatePickerStyle = .wheels
         
