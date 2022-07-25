@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JPC-m6-Olq">
-    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -8,16 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ホーム-->
+        <!--Remédios-->
         <scene sceneID="XOO-9n-eo1">
             <objects>
                 <viewController id="gs8-Om-bBd" customClass="HomeViewController" customModule="DrugReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wN9-eN-bt5">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YrL-1B-dBK">
-                                <rect key="frame" x="118.66666666666667" y="88" width="190.66666666666663" height="56"/>
+                                <rect key="frame" x="111.66666666666667" y="44" width="190.66666666666663" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDm-5Z-F2w">
                                         <rect key="frame" x="0.0" y="0.0" width="45.666666666666664" height="56"/>
@@ -48,14 +48,14 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="homeTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rbG-c1-vmh">
-                                <rect key="frame" x="0.0" y="152" width="428" height="691"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="579"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" id="hm0-nM-35a">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hm0-nM-35a" id="IxF-bB-XpB">
-                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -73,8 +73,8 @@
                             <constraint firstItem="rbG-c1-vmh" firstAttribute="top" secondItem="YrL-1B-dBK" secondAttribute="bottom" constant="8" id="xHs-nx-I0K"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ホーム" image="house" catalog="system" id="wIz-lt-sNV"/>
-                    <navigationItem key="navigationItem" title="ホーム" id="NZf-Vk-jOR"/>
+                    <tabBarItem key="tabBarItem" title="Remédios" image="house" catalog="system" id="wIz-lt-sNV"/>
+                    <navigationItem key="navigationItem" title="Remédios" id="NZf-Vk-jOR"/>
                     <connections>
                         <outlet property="dayLabel" destination="UpS-Bq-FJO" id="5dV-hi-hWL"/>
                         <outlet property="tableView" destination="rbG-c1-vmh" id="OUx-YT-jos"/>
@@ -85,17 +85,20 @@
             </objects>
             <point key="canvasLocation" x="-1713.0434782608697" y="1081.4732142857142"/>
         </scene>
-        <!--カレンダー-->
+        <!--Calendário-->
         <scene sceneID="74t-97-wAW">
             <objects>
                 <viewController id="WEJ-ME-Shk" customClass="CalendarViewController" customModule="DrugReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XYf-Zd-lJJ">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4H1-co-1Mh" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="88" width="428" height="361"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="361"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="361" id="nKk-ac-0GM"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
@@ -108,17 +111,17 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="v9r-cB-cF9">
-                                <rect key="frame" x="0.0" y="449" width="428" height="394"/>
+                                <rect key="frame" x="0.0" y="375" width="414" height="312"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="394" id="Dyo-eU-NHh"/>
+                                    <constraint firstAttribute="height" constant="312" id="79U-FS-Ezj"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Btq-5f-6AA">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Btq-5f-6AA" id="Ofk-VC-3fT">
-                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -133,12 +136,11 @@
                             <constraint firstItem="4H1-co-1Mh" firstAttribute="leading" secondItem="y4w-cc-j4z" secondAttribute="leading" id="DKs-6V-0o8"/>
                             <constraint firstItem="v9r-cB-cF9" firstAttribute="bottom" secondItem="y4w-cc-j4z" secondAttribute="bottom" id="ak3-gI-8Se"/>
                             <constraint firstItem="v9r-cB-cF9" firstAttribute="trailing" secondItem="y4w-cc-j4z" secondAttribute="trailing" id="arj-qa-TJf"/>
-                            <constraint firstItem="v9r-cB-cF9" firstAttribute="top" secondItem="4H1-co-1Mh" secondAttribute="bottom" id="hsZ-2o-x5p"/>
                             <constraint firstItem="4H1-co-1Mh" firstAttribute="trailing" secondItem="y4w-cc-j4z" secondAttribute="trailing" id="j3H-4o-uUt"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="カレンダー" image="calendar" catalog="system" id="hq0-1g-yyv"/>
-                    <navigationItem key="navigationItem" title="カレンダー" id="WHX-JN-3h7"/>
+                    <tabBarItem key="tabBarItem" title="Calendário" image="calendar" catalog="system" id="hq0-1g-yyv"/>
+                    <navigationItem key="navigationItem" title="Calendário" id="WHX-JN-3h7"/>
                     <connections>
                         <outlet property="calendar" destination="4H1-co-1Mh" id="WcX-Q2-8ec"/>
                         <outlet property="tableView" destination="v9r-cB-cF9" id="whc-Zl-RJv"/>
@@ -146,25 +148,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfJ-2U-r44" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-908.41121495327093" y="1204.5356371490282"/>
+            <point key="canvasLocation" x="-907.24637681159425" y="1204.6875"/>
         </scene>
-        <!--設定-->
+        <!--Ajustes-->
         <scene sceneID="h9W-uC-WJI">
             <objects>
                 <viewController id="4DZ-XP-Y9i" customClass="SettingsViewController" customModule="DrugReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nbj-lW-7D5">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eNo-3B-use">
-                                <rect key="frame" x="0.0" y="88" width="428" height="755"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="643"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="sov-l9-O6w">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sov-l9-O6w" id="Iav-Ce-hK6">
-                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -180,8 +182,8 @@
                             <constraint firstItem="eNo-3B-use" firstAttribute="top" secondItem="BKk-Nq-asE" secondAttribute="top" id="dtf-pg-mem"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="yui-fe-wJx"/>
-                    <navigationItem key="navigationItem" title="設定" id="92w-oR-2FH"/>
+                    <tabBarItem key="tabBarItem" title="Ajustes" image="gearshape" catalog="system" id="yui-fe-wJx"/>
+                    <navigationItem key="navigationItem" title="Ajustes" id="92w-oR-2FH"/>
                     <connections>
                         <outlet property="tableView" destination="eNo-3B-use" id="7Jb-fq-wDQ"/>
                     </connections>
@@ -190,28 +192,28 @@
             </objects>
             <point key="canvasLocation" x="5.7971014492753632" y="1080.8035714285713"/>
         </scene>
-        <!--お薬新規登録-->
+        <!--Cadastro-->
         <scene sceneID="EEa-IZ-6hE">
             <objects>
                 <viewController storyboardIdentifier="addDrugView" id="MT9-hZ-zkN" customClass="RegisterViewController" customModule="DrugReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hur-ld-VHj">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="p0W-Pu-jvu">
-                                <rect key="frame" x="0.0" y="88" width="428" height="575"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="463"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Lo-W7-wq5" userLabel="DrugName">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お薬名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gd-vc-Ocm">
-                                                <rect key="frame" x="8" y="8.0000000000000018" width="70" height="27.666666666666671"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome do Remédio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gd-vc-Ocm">
+                                                <rect key="frame" x="8" y="8.0000000000000018" width="183.66666666666666" height="27.666666666666671"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5fU-di-Bdn">
-                                                <rect key="frame" x="8" y="39.666666666666671" width="412" height="35"/>
+                                                <rect key="frame" x="8" y="39.666666666666671" width="398" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -227,16 +229,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nkY-fV-TJr" userLabel="NumberOfDoses">
-                                        <rect key="frame" x="0.0" y="110" width="428" height="90"/>
+                                        <rect key="frame" x="0.0" y="110" width="414" height="90"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服用回数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yT-gi-Mel">
-                                                <rect key="frame" x="8" y="8.0000000000000018" width="93.333333333333329" height="27.666666666666671"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dosagem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yT-gi-Mel">
+                                                <rect key="frame" x="8" y="8.0000000000000018" width="95.333333333333329" height="27.666666666666671"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rqX-0V-b6r">
-                                                <rect key="frame" x="8" y="39.666666666666657" width="412" height="35"/>
+                                                <rect key="frame" x="8" y="39.666666666666657" width="398" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -252,31 +254,31 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k2M-5k-BD1" userLabel="TimeToTaken">
-                                        <rect key="frame" x="0.0" y="220" width="428" height="355"/>
+                                        <rect key="frame" x="0.0" y="220" width="414" height="243"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服用時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oB-zn-3Qb">
-                                                <rect key="frame" x="8" y="8.0000000000000018" width="400" height="27.666666666666671"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hora da Dosagem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oB-zn-3Qb">
+                                                <rect key="frame" x="8" y="8.0000000000000018" width="386" height="27.666666666666671"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1回目" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OiX-US-Voj">
-                                                <rect key="frame" x="8" y="39.666666666666686" width="412" height="35"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1ª" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OiX-US-Voj">
+                                                <rect key="frame" x="8" y="39.666666666666686" width="398" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="2回目" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ADg-mf-nec">
-                                                <rect key="frame" x="8" y="82.333333333333314" width="412" height="35"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="2ª" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ADg-mf-nec">
+                                                <rect key="frame" x="8" y="82.333333333333314" width="398" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3回目" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QMY-tK-HmF">
-                                                <rect key="frame" x="8" y="124.66666666666669" width="412" height="35"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3ª" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QMY-tK-HmF">
+                                                <rect key="frame" x="8" y="124.66666666666669" width="398" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="4回目" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iH8-qV-C6K">
-                                                <rect key="frame" x="8" y="167.33333333333331" width="412" height="35"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="4ª" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iH8-qV-C6K">
+                                                <rect key="frame" x="8" y="167.33333333333331" width="398" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -311,8 +313,8 @@
                             <constraint firstItem="p0W-Pu-jvu" firstAttribute="leading" secondItem="Zws-lF-DRE" secondAttribute="leading" id="kQJ-Nu-Ilm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="お薬新規登録" id="EVc-ku-pKm">
-                        <barButtonItem key="rightBarButtonItem" title="登録" id="WhX-z4-MaJ">
+                    <navigationItem key="navigationItem" title="Cadastro" id="EVc-ku-pKm">
+                        <barButtonItem key="rightBarButtonItem" title="Registrar" id="WhX-z4-MaJ">
                             <connections>
                                 <action selector="registerPressed:" destination="MT9-hZ-zkN" id="zc1-Xl-YBK"/>
                             </connections>
@@ -356,7 +358,7 @@
                 <navigationController id="u2W-nA-oao" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="6pt-IA-tcT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6so-Fk-8qI">
-                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -373,7 +375,7 @@
                 <navigationController id="xNg-dr-vHG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="NNh-tI-I6U"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wen-Me-V0g">
-                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -390,7 +392,7 @@
                 <navigationController id="CnT-Is-mtt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="RE9-5S-NZj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vwd-KV-nkq">
-                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

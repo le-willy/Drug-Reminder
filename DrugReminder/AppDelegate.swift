@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         
-        
         // App Appearence
         UINavigationBar.appearance().backgroundColor = .yellow
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
@@ -35,16 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
     }
-
-    
-        
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        
-    }
-//    
-//    func applicationWillTerminate(_ application: UIApplication) {
-//        <#code#>
-//    }
 
 
     // MARK: UISceneSession Lifecycle

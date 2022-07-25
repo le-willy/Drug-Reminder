@@ -30,15 +30,18 @@ class HomeViewController: UIViewController {
     
     var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ja_JP")
-        dateFormatter.dateFormat = "MM月dd日"
+//        dateFormatter.locale = Locale(identifier: "ja_JP")
+        dateFormatter.locale = .current
+        dateFormatter.dateFormat = "MM月dd日".localized()
         return dateFormatter
     }
     
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .japanese)
-        formatter.timeZone = TimeZone(identifier: "JST")
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.calendar = .current
+//        formatter.calendar = Calendar(identifier: .japanese)
+//        formatter.timeZone = TimeZone(identifier: "JST")
         formatter.dateFormat = "HH:mm"
         return formatter
     }
@@ -74,7 +77,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         loadData()
         tableView.reloadData()
-        
+        untoggleCheckMark()
     }
     
     
@@ -153,14 +156,26 @@ class HomeViewController: UIViewController {
         
     }
     
+    func untoggleCheckMark() {
+        if today == Date().zeroclock {
+            dosingTime.forEach { item in
+                item.done = false
+                try! realm.write({
+                    item.done = false
+                })
+            }
+            tableView.reloadData()
+        }
+    }
+    
     
     //MARK: - Notification Area
     
     func sendNotification(date: DateComponents) {
         
         let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "お薬リマインダー"
-        notificationContent.body = "お薬の飲み忘れはございませんか？"
+        notificationContent.title = "お薬リマインダー".localized()
+        notificationContent.body = "お薬の飲み忘れはございませんか？".localized()
         
         drugDataArray.forEach { item in
             item.dosingTime.forEach { time in
@@ -218,14 +233,28 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let drugData = drugDataArray[indexPath.section]
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "homeCell")
-        
         if indexPath.section >= dosingTime.count {
             if let dosingTime = Array(drugData.dosingTime)[indexPath.row].at {
                 cell.textLabel?.text = timeFormatter.string(from: dosingTime)
                 cell.accessoryType = drugData.dosingTime[indexPath.row].done == true ? .checkmark: .none
+                
+                
+                
+                let currentHour = Calendar.current.dateComponents([.hour, .minute, .second], from: today)
+                let midnight = Calendar.current.dateComponents([.hour, .minute, .second], from: dosingTime.zeroclock)
+                
+                if currentHour == midnight {
+                    cell.accessoryType = .none
+                    
+                    try! realm.write({
+                        drugData.dosingTime[indexPath.row].done = false
+                    })
+                }
+                
+                
+                
             }
         }
-        
         setNotifications()
         
         return cell

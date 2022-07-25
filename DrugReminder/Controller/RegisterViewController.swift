@@ -20,7 +20,7 @@ class RegisterViewController: UIViewController {
     
     var drugData = DrugModel()
     
-    let dosesPerDay = [1: "1回",2: "2回",3: "3回",4: "4回"]
+    let dosesPerDay = ["1回".localized(),"2回".localized(),"3回".localized(),"4回".localized()]
     
     let dosesPickerView = UIPickerView()
     
@@ -29,7 +29,8 @@ class RegisterViewController: UIViewController {
         datePicker.timeZone = .current
         datePicker.datePickerMode = .time
         datePicker.minuteInterval = 10
-        datePicker.locale = Locale(identifier: "ja-JP")
+        datePicker.locale = .current
+//        datePicker.locale = Locale(identifier: "ja-JP")
         datePicker.preferredDatePickerStyle = .wheels
         
         return datePicker
@@ -37,7 +38,8 @@ class RegisterViewController: UIViewController {
     
     var dateFormatterToCreatedDate: DateFormatter {
         let dateFormat = DateFormatter()
-        dateFormat.timeZone = TimeZone(identifier: "JST")
+        dateFormat.timeZone = .current
+//        dateFormat.timeZone = TimeZone(identifier: "JST")
         dateFormat.dateFormat = "yyyy-MM-dd"
 
         return dateFormat
@@ -46,8 +48,10 @@ class RegisterViewController: UIViewController {
     
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .japanese)
-        formatter.timeZone = TimeZone(identifier: "JST")
+        formatter.calendar = .current
+        formatter.timeZone = .current
+//        formatter.calendar = Calendar(identifier: .japanese)
+//        formatter.timeZone = TimeZone(identifier: "JST")
         formatter.locale = .current
         formatter.dateFormat = "HH:mm"
         return formatter
@@ -63,8 +67,13 @@ class RegisterViewController: UIViewController {
         dosesPickerView.delegate = self
         
         configureDatePicker()
+        setToolBar()
         
-        let toolbar = UIToolbar()
+        numberOfDosesTextField.inputView = dosesPickerView
+    }
+    func setToolBar() {
+        let toolBarRect = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35)
+        let toolbar = UIToolbar(frame: toolBarRect)
         toolbar.sizeToFit()
         
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
@@ -76,8 +85,6 @@ class RegisterViewController: UIViewController {
         time2TextField.inputAccessoryView = toolbar
         time3TextField.inputAccessoryView = toolbar
         time4TextField.inputAccessoryView = toolbar
-        
-        numberOfDosesTextField.inputView = dosesPickerView
     }
     
     func configureDatePicker() {

@@ -11,7 +11,8 @@ extension Date {
     var calendar: Calendar {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = .current
-        calendar.locale = Locale(identifier: "ja-JP")
+        calendar.locale = .current
+//        calendar.locale = Locale(identifier: "ja-JP")
         return calendar
     }
     
@@ -28,6 +29,6 @@ extension Date {
     }
     
     var zeroclock: Date {
-        return fixed(hour: 0, minute: 0, second: 0)
+        return fixed(hour: 0, minute: 0 , second: 0)
     }
 }

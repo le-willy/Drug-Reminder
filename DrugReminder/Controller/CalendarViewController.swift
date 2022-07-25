@@ -21,8 +21,10 @@ class CalendarViewController: UIViewController {
     
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .japanese)
-        formatter.timeZone = TimeZone(identifier: "JST")
+        formatter.calendar = .current
+        formatter.timeZone = .current
+//        formatter.calendar = Calendar(identifier: .japanese)
+//        formatter.timeZone = TimeZone(identifier: "JST")
         formatter.dateFormat = "HH:mm"
         return formatter
     }
@@ -31,6 +33,7 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         self.overrideUserInterfaceStyle = .light
         self.view.backgroundColor = .yellow
+        
         loadData()
 
         calendarSetup()
@@ -42,24 +45,25 @@ class CalendarViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        loadData()
+        calendar.reloadData()
         tableView.reloadData()
 
     }
     
     func calendarSetup() {
-        calendar.appearance.headerDateFormat = "MM月dd日"
+//        calendar.appearance.headerDateFormat = "MM月dd日"
         calendar.appearance.headerTitleColor = .black
         calendar.appearance.todayColor = .systemRed
         calendar.appearance.selectionColor = .systemBlue
         
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
-        calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
-        calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
-        calendar.calendarWeekdayView.weekdayLabels[3].text = "水"
-        calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
-        calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
-        calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
+        calendar.calendarWeekdayView.weekdayLabels[0].text = "日".localized()
+        calendar.calendarWeekdayView.weekdayLabels[1].text = "月".localized()
+        calendar.calendarWeekdayView.weekdayLabels[2].text = "火".localized()
+        calendar.calendarWeekdayView.weekdayLabels[3].text = "水".localized()
+        calendar.calendarWeekdayView.weekdayLabels[4].text = "木".localized()
+        calendar.calendarWeekdayView.weekdayLabels[5].text = "金".localized()
+        calendar.calendarWeekdayView.weekdayLabels[6].text = "土".localized()
         
         calendar.calendarWeekdayView.weekdayLabels[6].textColor = .blue
         calendar.calendarWeekdayView.weekdayLabels[0].textColor = .red
