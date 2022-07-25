@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JPC-m6-Olq">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="gs8-Om-bBd" customClass="HomeViewController" customModule="DrugReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wN9-eN-bt5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YrL-1B-dBK">
-                                <rect key="frame" x="111.66666666666667" y="44" width="190.66666666666663" height="56"/>
+                                <rect key="frame" x="111.66666666666667" y="88" width="190.66666666666663" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDm-5Z-F2w">
                                         <rect key="frame" x="0.0" y="0.0" width="45.666666666666664" height="56"/>
@@ -48,7 +48,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="homeTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rbG-c1-vmh">
-                                <rect key="frame" x="0.0" y="108" width="414" height="579"/>
+                                <rect key="frame" x="0.0" y="152" width="414" height="661"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" id="hm0-nM-35a">
@@ -90,15 +90,12 @@
             <objects>
                 <viewController id="WEJ-ME-Shk" customClass="CalendarViewController" customModule="DrugReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XYf-Zd-lJJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4H1-co-1Mh" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="361"/>
+                                <rect key="frame" x="0.0" y="88.000000000000028" width="414" height="362.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="361" id="nKk-ac-0GM"/>
-                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
@@ -111,11 +108,8 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="v9r-cB-cF9">
-                                <rect key="frame" x="0.0" y="375" width="414" height="312"/>
+                                <rect key="frame" x="0.0" y="450.66666666666674" width="414" height="362.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="312" id="79U-FS-Ezj"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Btq-5f-6AA">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="414" height="43.666667938232422"/>
@@ -136,7 +130,9 @@
                             <constraint firstItem="4H1-co-1Mh" firstAttribute="leading" secondItem="y4w-cc-j4z" secondAttribute="leading" id="DKs-6V-0o8"/>
                             <constraint firstItem="v9r-cB-cF9" firstAttribute="bottom" secondItem="y4w-cc-j4z" secondAttribute="bottom" id="ak3-gI-8Se"/>
                             <constraint firstItem="v9r-cB-cF9" firstAttribute="trailing" secondItem="y4w-cc-j4z" secondAttribute="trailing" id="arj-qa-TJf"/>
+                            <constraint firstItem="v9r-cB-cF9" firstAttribute="top" secondItem="4H1-co-1Mh" secondAttribute="bottom" id="fcl-m1-qdZ"/>
                             <constraint firstItem="4H1-co-1Mh" firstAttribute="trailing" secondItem="y4w-cc-j4z" secondAttribute="trailing" id="j3H-4o-uUt"/>
+                            <constraint firstItem="v9r-cB-cF9" firstAttribute="height" secondItem="4H1-co-1Mh" secondAttribute="height" id="wAe-8s-RBU"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calendário" image="calendar" catalog="system" id="hq0-1g-yyv"/>
@@ -155,11 +151,11 @@
             <objects>
                 <viewController id="4DZ-XP-Y9i" customClass="SettingsViewController" customModule="DrugReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nbj-lW-7D5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eNo-3B-use">
-                                <rect key="frame" x="0.0" y="44" width="414" height="643"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="sov-l9-O6w">
@@ -197,11 +193,11 @@
             <objects>
                 <viewController storyboardIdentifier="addDrugView" id="MT9-hZ-zkN" customClass="RegisterViewController" customModule="DrugReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hur-ld-VHj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="p0W-Pu-jvu">
-                                <rect key="frame" x="0.0" y="44" width="414" height="463"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="545"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Lo-W7-wq5" userLabel="DrugName">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -254,7 +250,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k2M-5k-BD1" userLabel="TimeToTaken">
-                                        <rect key="frame" x="0.0" y="220" width="414" height="243"/>
+                                        <rect key="frame" x="0.0" y="220" width="414" height="325"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hora da Dosagem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oB-zn-3Qb">
                                                 <rect key="frame" x="8" y="8.0000000000000018" width="386" height="27.666666666666671"/>
@@ -358,7 +354,7 @@
                 <navigationController id="u2W-nA-oao" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="6pt-IA-tcT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6so-Fk-8qI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -375,7 +371,7 @@
                 <navigationController id="xNg-dr-vHG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="NNh-tI-I6U"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wen-Me-V0g">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -392,7 +388,7 @@
                 <navigationController id="CnT-Is-mtt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="RE9-5S-NZj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vwd-KV-nkq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

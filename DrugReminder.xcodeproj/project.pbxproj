@@ -70,8 +70,6 @@
 		3F28F57227FC51F700844EAC /* DrugModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugModel.swift; sourceTree = "<group>"; };
 		3F31CF3F281206C100FAD4F5 /* DosingTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DosingTime.swift; sourceTree = "<group>"; };
 		3F939F33283F89DF0094CD05 /* DateExtencion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtencion.swift; sourceTree = "<group>"; };
-		3FB1199C288C1349001F5E29 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
-		3FB1199E288C1360001F5E29 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3FB119A0288C1362001F5E29 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3FB119A1288C1363001F5E29 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		3FB119A4288C2345001F5E29 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "pt-BR"; path = "pt-BR.lproj/Main.storyboard"; sourceTree = "<group>"; };
@@ -79,6 +77,7 @@
 		3FB119B4288C2DDB001F5E29 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3FB119B6288C2DDF001F5E29 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		3FB119B7288C2DE3001F5E29 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3FB119B8288E8179001F5E29 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ja; path = ja.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3FB3BD7B288C0DE400A56E43 /* StringExtencion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtencion.swift; sourceTree = "<group>"; };
 		4218CBDA9893ABB4C3E57767 /* Pods_DrugReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AA5CD909BB563934EC2D9C8 /* Pods-DrugReminderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugReminderTests.debug.xcconfig"; path = "Target Support Files/Pods-DrugReminderTests/Pods-DrugReminderTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -518,9 +517,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				3F28F54027FC506900844EAC /* Base */,
-				3FB1199C288C1349001F5E29 /* ja */,
 				3FB119A4288C2345001F5E29 /* pt-BR */,
 				3FB119A5288C26D6001F5E29 /* en */,
+				3FB119B8288E8179001F5E29 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -536,7 +535,6 @@
 		3FB1199F288C1360001F5E29 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3FB1199E288C1360001F5E29 /* ja */,
 				3FB119A0288C1362001F5E29 /* en */,
 				3FB119A1288C1363001F5E29 /* pt-BR */,
 			);
